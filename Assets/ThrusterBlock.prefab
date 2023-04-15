@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2399846196499180148}
   - component: {fileID: 2399846196499180149}
   - component: {fileID: 2399846196499180169}
-  m_Layer: 0
+  - component: {fileID: -1150623604760843311}
+  m_Layer: 11
   m_Name: ThrusterBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +154,19 @@ MonoBehaviour:
   down: {fileID: 2399846196602588298}
   left: {fileID: 2399846197931803281}
   right: {fileID: 2399846197869595400}
+--- !u!114 &-1150623604760843311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399846196499180147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8119d9ef7b776202eaf60596ee319e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &2399846196602588297
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +178,7 @@ GameObject:
   - component: {fileID: 2399846196602588296}
   - component: {fileID: 2399846196602588298}
   - component: {fileID: 2399846196602588299}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerExhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +288,7 @@ GameObject:
   - component: {fileID: 2399846197585519337}
   - component: {fileID: 2399846197585519339}
   - component: {fileID: 2399846197585519336}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperExhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +398,7 @@ GameObject:
   - component: {fileID: 2399846197869595382}
   - component: {fileID: 2399846197869595400}
   - component: {fileID: 2399846197869595401}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RightExhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +508,7 @@ GameObject:
   - component: {fileID: 2399846197931803295}
   - component: {fileID: 2399846197931803281}
   - component: {fileID: 2399846197931803294}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LeftExhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}

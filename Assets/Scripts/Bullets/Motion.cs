@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface Pattern
+public interface Motion
 {
     public Vector3 PositionAt(float time);
 }

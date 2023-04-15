@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +13,12 @@ public class Ship : MonoBehaviour
     [SerializeField]
     private float moveForce = 10;
 
+    private void Start()
+    {
+        leftSide.GetComponent<Hitbox>().OnHit += (damage, remainingHealth) => Debug.Log($"Left side took ${damage} damage, has {remainingHealth} health");
+        rightSide.GetComponent<Hitbox>().OnHit += (damage, remainingHealth) => Debug.Log($"Right side took ${damage} damage, has {remainingHealth} health");
+    }
+
     float f(bool x)
     {
         return x ? 1 : 0;
@@ -26,6 +30,7 @@ public class Ship : MonoBehaviour
         var gamepad = Gamepad.current;
         var keyboard = Keyboard.current;
         Vector2 leftMovement, rightMovement;
+
         if (gamepad == null)
         {
             leftMovement = new Vector2(f(keyboard.dKey.isPressed) - f(keyboard.aKey.isPressed), f(keyboard.wKey.isPressed) - f(keyboard.sKey.isPressed));
@@ -36,12 +41,10 @@ public class Ship : MonoBehaviour
             leftMovement = gamepad.leftStick.ReadValue();
             rightMovement = gamepad.rightStick.ReadValue();
         }
-        Debug.Log(leftMovement);
 
         leftSide.AddForce(leftMovement * moveForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
         leftSide.GetComponent<ThrusterBlock>().SetThrusterIntensity(-leftMovement);
         rightSide.AddForce(rightMovement * moveForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
         rightSide.GetComponent<ThrusterBlock>().SetThrusterIntensity(-rightMovement);
-
     }
 }

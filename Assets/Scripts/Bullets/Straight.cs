@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Straight : Pattern
+public class Straight : Motion
 {
     private Vector3 startPosition;
     private Vector3 direction;

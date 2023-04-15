@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Ship : MonoBehaviour
 {
+    public delegate void ShipEvent();
+    public ShipEvent OnDeath;
 
     [SerializeField]
     private Rigidbody2D leftSide;
@@ -22,17 +24,30 @@ public class Ship : MonoBehaviour
     [SerializeField]
     private float killHealAmount = 20;
 
+    private int kills = 0;
+    public int Kills => kills;
+
     private void Start()
     {
         leftHitbox = leftSide.GetComponent<Hitbox>();
         rightHitbox = rightSide.GetComponent<Hitbox>();
         spring.OnKill += OnKill;
+        leftHitbox.OnDeath += HandleDeath;
+        rightHitbox.OnDeath += HandleDeath;
     }
 
     private void OnKill()
     {
         var leftHealth = leftHitbox.Heal(killHealAmount);
         var rightHealth = rightHitbox.Heal(killHealAmount);
+        kills++;
+    }
+
+    private void HandleDeath(float damage, float remainingHealth)
+    {
+        OnDeath?.Invoke();
+        // TODO explode
+        Destroy(gameObject);
     }
 
     float f(bool x)

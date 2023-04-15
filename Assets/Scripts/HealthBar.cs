@@ -27,25 +27,27 @@ public class HealthBar : MonoBehaviour
         material = GetComponent<SpriteRenderer>().material;
         material = Instantiate(material);
         GetComponent<SpriteRenderer>().material = material;
+
+        leftHealth = leftHitbox.MaxHealth;
+        rightHealth = rightHitbox.MaxHealth;
         SetLeftHealth(leftHitbox.MaxHealth);
         SetRightHealth(rightHitbox.MaxHealth);
     }
 
     private void OnLeftHit(float delta, float remainingHealth)
     {
-        LeanTween.value(gameObject, SetLeftHealth, leftHealth, remainingHealth, transitionTime);
+        LeanTween.value(leftHitbox.gameObject, SetLeftHealth, leftHealth, remainingHealth, transitionTime);
         leftHealth = remainingHealth;
     }
 
     private void OnRightHit(float delta, float remainingHealth)
     {
-        LeanTween.value(gameObject, SetRightHealth, rightHealth, remainingHealth, transitionTime);
+        LeanTween.value(rightHitbox.gameObject, SetRightHealth, rightHealth, remainingHealth, transitionTime);
         rightHealth = remainingHealth;
     }
 
     private void SetLeftHealth(float health)
     {
-        Debug.Log(health);
         material.SetFloat("_LeftHealth", health / leftHitbox.MaxHealth);
     }
 

@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour
         else
         {
             position = Vector3.right * Arena.EnemySpawnHalfWidth * (spawn.side == Direction.RIGHT ? 1 : -1);
-            position += Vector3.up * Random.Range(-Arena.EnemyHalfWidth, Arena.EnemyHalfHeight);
+            position += Vector3.up * Random.Range(-Arena.EnemyHalfHeight, Arena.EnemyHalfHeight);
         }
 
         Instantiate(spawn.enemy, position, Quaternion.identity, transform);

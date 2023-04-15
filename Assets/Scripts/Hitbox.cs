@@ -7,6 +7,7 @@ public class Hitbox : MonoBehaviour
 
     [SerializeField]
     private float maxHealth = 100;
+    public float MaxHealth => maxHealth;
 
     private float health;
 

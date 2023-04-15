@@ -26,8 +26,6 @@ public class Ship : MonoBehaviour
     {
         leftHitbox = leftSide.GetComponent<Hitbox>();
         rightHitbox = rightSide.GetComponent<Hitbox>();
-        leftHitbox.OnHit += (damage, remainingHealth) => Debug.Log($"Left side took {damage} damage, has {remainingHealth} health");
-        rightHitbox.OnHit += (damage, remainingHealth) => Debug.Log($"Right side took {damage} damage, has {remainingHealth} health");
         spring.OnKill += OnKill;
     }
 
@@ -35,7 +33,6 @@ public class Ship : MonoBehaviour
     {
         var leftHealth = leftHitbox.Heal(killHealAmount);
         var rightHealth = rightHitbox.Heal(killHealAmount);
-        Debug.Log($"Healed to {leftHealth} {rightHealth}");
     }
 
     float f(bool x)

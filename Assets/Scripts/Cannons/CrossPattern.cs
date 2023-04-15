@@ -27,9 +27,9 @@ public class CrossPattern : Pattern
 
     public override void Fire(float time)
     {
-        LaunchBullet(upBullet, transform.up);
-        LaunchBullet(downBullet, -transform.up);
-        LaunchBullet(leftBullet, -transform.right);
-        LaunchBullet(rightBullet, transform.right);
+        if (upBullet) LaunchBullet(upBullet, transform.up);
+        if (downBullet) LaunchBullet(downBullet, -transform.up);
+        if (leftBullet) LaunchBullet(leftBullet, -transform.right);
+        if (rightBullet) LaunchBullet(rightBullet, transform.right);
     }
 }

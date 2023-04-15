@@ -17,7 +17,6 @@ public class Spring : MonoBehaviour
     private void Update()
     {
         var offset = (joint.connectedBody.transform.position - transform.position);
-        Debug.Log(offset.magnitude);
         mesh.up = offset.normalized;
         mesh.position = transform.position;
         var length = (offset.magnitude) / 2;

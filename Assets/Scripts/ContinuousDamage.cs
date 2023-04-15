@@ -16,6 +16,13 @@ public class ContinuousDamage : MonoBehaviour
 
     private float lastDamageTime;
 
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private bool CanDamage(Collider2D other)
     {
         return (damagedLayers.value & (1 << other.gameObject.layer)) > 0;
@@ -37,6 +44,10 @@ public class ContinuousDamage : MonoBehaviour
             var remainingHealth = hitbox.Damage(damage);
             if (remainingHealth <= 0)
             {
+                if (audioSource != null)
+                {
+                    audioSource.Play();
+                }
                 OnKill?.Invoke();
             }
             lastDamageTime = Time.time;

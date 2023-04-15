@@ -7,16 +7,25 @@ public class Enemy : MonoBehaviour
     private Cannon cannon;
 
     [SerializeField]
+    private GameObject explosion;
+
+    [SerializeField]
     private float moveSpeed = 5;
 
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
         hitbox = GetComponent<Hitbox>();
-        hitbox.OnDeath += (damage, remainingHealth) => Destroy(gameObject);
+        hitbox.OnDeath += OnDeath;
         hitbox.OnHit += (damage, remainingHealth) => Debug.Log($"Enemy took {damage} damage");
         cannon = GetComponent<Cannon>();
         cannon.enabled = false;
+    }
+
+    private void OnDeath(float damage, float remainingHealth)
+    {
+        Instantiate(explosion, transform.position, transform.rotation, transform.parent);
+        Destroy(gameObject);
     }
 
     void Update()

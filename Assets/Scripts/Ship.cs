@@ -14,9 +14,12 @@ public class Ship : MonoBehaviour
     private Rigidbody2D rightSide;
     private Hitbox rightHitbox;
 
-
     [SerializeField]
     private ContinuousDamage spring;
+
+    [SerializeField]
+    private GameObject explosion;
+
 
     [SerializeField]
     private float moveForce = 10;
@@ -27,13 +30,24 @@ public class Ship : MonoBehaviour
     private int kills = 0;
     public int Kills => kills;
 
+    private AudioSource hitSound;
+
     private void Start()
     {
         leftHitbox = leftSide.GetComponent<Hitbox>();
         rightHitbox = rightSide.GetComponent<Hitbox>();
+        hitSound = GetComponent<AudioSource>();
+
         spring.OnKill += OnKill;
+        leftHitbox.OnHit += OnHit;
+        rightHitbox.OnHit += OnHit;
         leftHitbox.OnDeath += HandleDeath;
         rightHitbox.OnDeath += HandleDeath;
+    }
+
+    private void OnHit(float damage, float remainingHealth)
+    {
+        hitSound.Play();
     }
 
     private void OnKill()
@@ -46,7 +60,9 @@ public class Ship : MonoBehaviour
     private void HandleDeath(float damage, float remainingHealth)
     {
         OnDeath?.Invoke();
-        // TODO explode
+        Instantiate(explosion, leftSide.position, Quaternion.identity, transform.parent);
+        Instantiate(explosion, rightSide.position, Quaternion.identity, transform.parent);
+        Instantiate(explosion, leftSide.position + (rightSide.position - leftSide.position) / 2, Quaternion.identity, transform.parent);
         Destroy(gameObject);
     }
 

@@ -44,6 +44,9 @@ public class Spawner : MonoBehaviour
     {
         level = levels[0];
         startTime = Time.time;
+
+        // Ignore collisions between enclosure walls and enemies
+        Physics2D.IgnoreLayerCollision(10, 11);
     }
 
     private void Spawn()

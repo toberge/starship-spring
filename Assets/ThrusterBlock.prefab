@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2399846196499180149}
   - component: {fileID: 2399846196499180169}
   - component: {fileID: -1150623604760843311}
+  - component: {fileID: 9065211102182747321}
   m_Layer: 11
   m_Name: ThrusterBlock
   m_TagString: Untagged
@@ -167,6 +168,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &9065211102182747321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399846196499180147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b225163ebae90fe82a872ca6c812b105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2399846196602588297
 GameObject:
   m_ObjectHideFlags: 0

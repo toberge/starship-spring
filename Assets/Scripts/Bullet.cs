@@ -32,7 +32,6 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         var isDamaged = (damagedLayers.value & (1 << other.gameObject.layer)) > 0;
-        Debug.Log($"layer {damagedLayers.value} & {other.gameObject.layer}");
         if (isDamaged && other.gameObject.TryGetComponent<Hitbox>(out var hitbox))
         {
             hitbox.Damage(damage);
@@ -50,5 +49,10 @@ public class Bullet : MonoBehaviour
         spriteRenderer.color = color;
 
         transform.position = Motion.PositionAt(Time.time);
+
+        if (Mathf.Max(Mathf.Abs(transform.position.x), Mathf.Abs(transform.position.y)) > 100)
+        {
+            Destroy(gameObject);
+        }
     }
 }

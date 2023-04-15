@@ -3,7 +3,7 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     public delegate void HitEvent(float damage, float remainingHealth);
-    public HitEvent OnHit, OnDeath;
+    public HitEvent OnHit, OnDeath, OnHeal;
 
     [SerializeField]
     private float maxHealth = 100;
@@ -15,7 +15,7 @@ public class Hitbox : MonoBehaviour
         health = maxHealth;
     }
 
-    public void Damage(float damage)
+    public float Damage(float damage)
     {
         health = Mathf.Clamp(health - damage, 0, maxHealth);
         OnHit?.Invoke(damage, health);
@@ -23,5 +23,13 @@ public class Hitbox : MonoBehaviour
         {
             OnDeath?.Invoke(damage, health);
         }
+        return health;
+    }
+
+    public float Heal(float amount)
+    {
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+        OnHeal?.Invoke(amount, health);
+        return health;
     }
 }

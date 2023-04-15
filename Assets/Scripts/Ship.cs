@@ -6,17 +6,36 @@ public class Ship : MonoBehaviour
 
     [SerializeField]
     private Rigidbody2D leftSide;
+    private Hitbox leftHitbox;
 
     [SerializeField]
     private Rigidbody2D rightSide;
+    private Hitbox rightHitbox;
+
+
+    [SerializeField]
+    private ContinuousDamage spring;
 
     [SerializeField]
     private float moveForce = 10;
 
+    [SerializeField]
+    private float killHealAmount = 20;
+
     private void Start()
     {
-        leftSide.GetComponent<Hitbox>().OnHit += (damage, remainingHealth) => Debug.Log($"Left side took ${damage} damage, has {remainingHealth} health");
-        rightSide.GetComponent<Hitbox>().OnHit += (damage, remainingHealth) => Debug.Log($"Right side took ${damage} damage, has {remainingHealth} health");
+        leftHitbox = leftSide.GetComponent<Hitbox>();
+        rightHitbox = rightSide.GetComponent<Hitbox>();
+        leftHitbox.OnHit += (damage, remainingHealth) => Debug.Log($"Left side took {damage} damage, has {remainingHealth} health");
+        rightHitbox.OnHit += (damage, remainingHealth) => Debug.Log($"Right side took {damage} damage, has {remainingHealth} health");
+        spring.OnKill += OnKill;
+    }
+
+    private void OnKill()
+    {
+        var leftHealth = leftHitbox.Heal(killHealAmount);
+        var rightHealth = rightHitbox.Heal(killHealAmount);
+        Debug.Log($"Healed to {leftHealth} {rightHealth}");
     }
 
     float f(bool x)

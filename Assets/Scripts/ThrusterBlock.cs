@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -14,13 +12,8 @@ public class ThrusterBlock : MonoBehaviour
     [SerializeField]
     private VisualEffect right;
 
-    // TODO make it respond to movement of its rigidbody?
-    // ...nah
-    // make it take a command for thrusting?
-
     private void Start()
     {
-
         up.SetFloat("Intensity", 0);
         down.SetFloat("Intensity", 0);
         left.SetFloat("Intensity", 0);

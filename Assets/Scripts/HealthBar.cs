@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
@@ -25,9 +24,9 @@ public class HealthBar : MonoBehaviour
         rightHitbox.OnHit += OnRightHit;
 
         // Ensure we're not writing to the material by instantiating it
-        material = GetComponent<Image>().material;
+        material = GetComponent<SpriteRenderer>().material;
         material = Instantiate(material);
-        GetComponent<Image>().material = material;
+        GetComponent<SpriteRenderer>().material = material;
         SetLeftHealth(leftHitbox.MaxHealth);
         SetRightHealth(rightHitbox.MaxHealth);
     }
@@ -46,6 +45,7 @@ public class HealthBar : MonoBehaviour
 
     private void SetLeftHealth(float health)
     {
+        Debug.Log(health);
         material.SetFloat("_LeftHealth", health / leftHitbox.MaxHealth);
     }
 

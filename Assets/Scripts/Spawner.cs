@@ -23,8 +23,8 @@ public class Spawner : MonoBehaviour
     private EnemySpawn[] spawns;
 
     [SerializeField]
-    private float spawnRate = 5;
-    private float lastSpawnTime;
+    private float spawnDelay = 2;
+    private float lastSpawnTime = -100;
 
     private void Spawn()
     {
@@ -47,7 +47,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (Time.time - lastSpawnTime > spawnRate)
+        if (Time.time - lastSpawnTime > spawnDelay)
         {
             Spawn();
             lastSpawnTime = Time.time;

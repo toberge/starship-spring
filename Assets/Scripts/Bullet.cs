@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     public Motion Motion;
 
-    void Start()
+    private void Start()
     {
         startTime = Time.time;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -43,14 +43,14 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         var color = Color.Lerp(color1, color2, pulseCurve.Evaluate((Time.time - startTime) * 2));
         spriteRenderer.color = color;
 
         transform.position = Motion.PositionAt(Time.time);
 
-        if (Mathf.Max(Mathf.Abs(transform.position.x), Mathf.Abs(transform.position.y)) > 100)
+        if (Mathf.Abs(transform.position.x) > Arena.Width / 2 || Mathf.Abs(transform.position.y) > Arena.Height / 2)
         {
             Destroy(gameObject);
         }

@@ -16,12 +16,12 @@ public class ContinuousDamage : MonoBehaviour
 
     private float lastDamageTime;
 
-    bool CanDamage(Collider2D other)
+    private bool CanDamage(Collider2D other)
     {
         return (damagedLayers.value & (1 << other.gameObject.layer)) > 0;
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (CanDamage(other) && other.gameObject.TryGetComponent<Hitbox>(out var hitbox))
         {

@@ -17,8 +17,12 @@ public class Spring : MonoBehaviour
     private void Update()
     {
         var offset = (joint.connectedBody.transform.position - transform.position);
+        Debug.Log(offset.magnitude);
         mesh.up = offset.normalized;
-        mesh.position = transform.position + new Vector3(offset.x / 2, offset.y / 2, 0);
-        mesh.localScale = new Vector3(mesh.localScale.x, offset.magnitude / 2, mesh.localScale.z);
+        mesh.position = transform.position;
+        var length = (offset.magnitude) / 2;
+        // TODO vary thickness slightly
+        var thickness = 1;
+        mesh.localScale = new Vector3(thickness, length, thickness);
     }
 }

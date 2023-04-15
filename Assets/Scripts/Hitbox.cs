@@ -10,7 +10,7 @@ public class Hitbox : MonoBehaviour
 
     private float health;
 
-    void Start()
+    private void Start()
     {
         health = maxHealth;
     }

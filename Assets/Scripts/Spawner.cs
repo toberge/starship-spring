@@ -17,14 +17,34 @@ public struct EnemySpawn
     public Direction side;
 }
 
+[Serializable]
+public struct DifficultyLevel
+{
+    public float time;
+    public int spawnDelay;
+    public int spawns;
+    public int spawnsPerSide;
+}
+
+
 public class Spawner : MonoBehaviour
 {
     [SerializeField]
     private EnemySpawn[] spawns;
 
     [SerializeField]
-    private float spawnDelay = 2;
+    private DifficultyLevel[] levels;
+    private DifficultyLevel level;
+    private int nextLevelIndex = 1;
+
     private float lastSpawnTime = -100;
+    private float startTime;
+
+    private void Start()
+    {
+        level = levels[0];
+        startTime = Time.time;
+    }
 
     private void Spawn()
     {
@@ -45,11 +65,20 @@ public class Spawner : MonoBehaviour
         Instantiate(spawn.enemy, position, Quaternion.identity, transform);
     }
 
-    void Update()
+    private void Update()
     {
-        if (Time.time - lastSpawnTime > spawnDelay)
+        if (nextLevelIndex < levels.Length - 1 && Time.time - startTime > levels[nextLevelIndex].time)
         {
-            Spawn();
+            level = levels[nextLevelIndex];
+            nextLevelIndex++;
+        }
+
+        if (Time.time - lastSpawnTime > level.spawnDelay)
+        {
+            for (int i = 0; i < level.spawns; i++)
+            {
+                Spawn();
+            }
             lastSpawnTime = Time.time;
         }
     }

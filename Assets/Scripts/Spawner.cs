@@ -8,12 +8,41 @@ public enum Direction
     DOWN,
     LEFT,
     RIGHT,
+    HORIZONTAL,
+    VERTICAL,
+    ANY,
+}
+
+public static class DirectionExtension
+{
+    private static readonly Direction[] AnyDirection = { Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT };
+
+    public static Vector3 ToVector(this Direction direction)
+    {
+        switch (direction)
+        {
+            case Direction.UP:
+            case Direction.DOWN:
+                return Vector3.up * (direction == Direction.UP ? 1 : -1);
+            case Direction.VERTICAL:
+                return Random.Range(0, 1) == 1 ? Vector3.up : Vector3.down;
+            case Direction.LEFT:
+            case Direction.RIGHT:
+                return Vector3.right * (direction == Direction.RIGHT ? 1 : -1);
+            case Direction.HORIZONTAL:
+                return Random.Range(0, 1) == 1 ? Vector3.left : Vector3.right;
+            case Direction.ANY:
+                return AnyDirection[Random.Range(0, 3)].ToVector();
+            default:
+                return Vector3.up;
+        }
+    }
 }
 
 [Serializable]
 public struct EnemySpawn
 {
-    public Enemy enemy;
+    public GameObject enemy;
     public Direction side;
 }
 
@@ -53,15 +82,16 @@ public class Spawner : MonoBehaviour
     {
         var spawn = spawns[Random.Range(0, spawns.Length)];
 
-        Vector3 position;
-        if (spawn.side == Direction.UP || spawn.side == Direction.DOWN)
+        Vector3 position = spawn.side.ToVector();
+
+        if (Mathf.Abs(position.y) > 0)
         {
-            position = Vector3.up * Arena.EnemySpawnHalfHeight * (spawn.side == Direction.UP ? 1 : -1);
+            position *= Arena.EnemySpawnHalfHeight;
             position += Vector3.right * Random.Range(-Arena.EnemyHalfWidth, Arena.EnemyHalfWidth);
         }
         else
         {
-            position = Vector3.right * Arena.EnemySpawnHalfWidth * (spawn.side == Direction.RIGHT ? 1 : -1);
+            position *= Arena.EnemySpawnHalfWidth;
             position += Vector3.up * Random.Range(-Arena.EnemyHalfHeight, Arena.EnemyHalfHeight);
         }
 

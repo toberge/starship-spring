@@ -79,7 +79,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 8615003321379890237, guid: 6db4bb09e74346e789fd5e78c2a62f9d,
     type: 3}
-  moveSpeed: 5
+  moveForce: 1
 --- !u!1 &2399846196602588297
 GameObject:
   m_ObjectHideFlags: 0

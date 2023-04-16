@@ -1707,14 +1707,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawns:
-  - enemy: {fileID: 6613645497901430974, guid: 6885b686a71c32709a7b2d7669785b64, type: 3}
-    side: 0
-  - enemy: {fileID: 6613645497901430974, guid: 6885b686a71c32709a7b2d7669785b64, type: 3}
-    side: 1
-  - enemy: {fileID: 8395330869890891509, guid: 187a1f7a5e5c651dc9e9e89a8fc5f70c, type: 3}
-    side: 2
-  - enemy: {fileID: 8395330869890891509, guid: 187a1f7a5e5c651dc9e9e89a8fc5f70c, type: 3}
-    side: 3
+  - enemy: {fileID: 525669480301788788, guid: 6885b686a71c32709a7b2d7669785b64, type: 3}
+    side: 5
+  - enemy: {fileID: 2882825906090932287, guid: 187a1f7a5e5c651dc9e9e89a8fc5f70c, type: 3}
+    side: 4
+  - enemy: {fileID: 2063514584920364999, guid: 59fafb0c3dc517828aca8769b1c24c75, type: 3}
+    side: 5
+  - enemy: {fileID: 5376527718886209954, guid: acd2ab82860f3f566b861782064e9205, type: 3}
+    side: 4
+  - enemy: {fileID: 4145029243934239420, guid: cc799b0fc6d3a94ff8f7ffcd2021b301, type: 3}
+    side: 6
   levels:
   - time: 0
     spawnDelay: 2
@@ -1882,6 +1884,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399846196499180149, guid: f7a8f49e8d8693fa7891ec4c8b8de480,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2399846196602588297, guid: f7a8f49e8d8693fa7891ec4c8b8de480,
         type: 3}
@@ -2425,6 +2432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399846196499180149, guid: f7a8f49e8d8693fa7891ec4c8b8de480,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2399846196602588297, guid: f7a8f49e8d8693fa7891ec4c8b8de480,
         type: 3}

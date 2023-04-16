@@ -4,7 +4,6 @@ public class Enemy : MonoBehaviour
 {
     private Rigidbody2D body;
     private Hitbox hitbox;
-    private Cannon cannon;
     private ThrusterBlock thruster;
 
     [SerializeField]
@@ -20,8 +19,6 @@ public class Enemy : MonoBehaviour
         hitbox = GetComponent<Hitbox>();
         hitbox.OnDeath += OnDeath;
         hitbox.OnHit += (damage, remainingHealth) => Debug.Log($"Enemy took {damage} damage");
-        cannon = GetComponent<Cannon>();
-        cannon.enabled = false;
     }
 
     private void OnDeath(float damage, float remainingHealth)
@@ -32,19 +29,17 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        var x = Mathf.Abs(transform.position.x);
-        var y = Mathf.Abs(transform.position.y);
-        if (x < Arena.EnemyHalfWidth && y < Arena.EnemyHalfHeight)
-        {
-            cannon.enabled = true;
-        }
-        else if (x > Arena.EnemyHalfWidth)
+        if (Mathf.Abs(transform.position.x) > Arena.EnemyHalfWidth)
         {
             thruster.AddForce(Mathf.Sign(transform.position.x) * Vector3.left, Time.fixedDeltaTime * moveForce);
         }
-        else
+        else if (Mathf.Abs(transform.position.y) > Arena.EnemyHalfHeight)
         {
             thruster.AddForce(Mathf.Sign(transform.position.y) * Vector3.down, Time.fixedDeltaTime * moveForce);
+        }
+        else
+        {
+            thruster.Stop();
         }
     }
 }

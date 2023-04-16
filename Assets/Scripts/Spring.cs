@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpringJoint2D))]
 public class Spring : MonoBehaviour
 {
 
@@ -7,15 +8,34 @@ public class Spring : MonoBehaviour
     private Transform mesh;
 
     private SpringJoint2D joint;
+    private Hitbox otherHitbox;
 
-
-    void Start()
+    private void Start()
     {
         joint = GetComponent<SpringJoint2D>();
+        otherHitbox = joint.connectedBody.GetComponent<Hitbox>();
+        otherHitbox.OnDeath += OnConnectedDeath;
+    }
+
+    private void OnDestroy()
+    {
+        otherHitbox.OnDeath -= OnConnectedDeath;
+    }
+
+    private void OnConnectedDeath(float damage, float remainingHealth)
+    {
+        // TODO explosion maybe?
+        Destroy(mesh.gameObject);
+        Destroy(this);
+        joint.enabled = false;
     }
 
     private void Update()
     {
+        if (joint.connectedBody == null)
+        {
+            Debug.LogWarning($"");
+        }
         var offset = (joint.connectedBody.transform.position - transform.position);
         mesh.up = offset.normalized;
         mesh.position = transform.position;

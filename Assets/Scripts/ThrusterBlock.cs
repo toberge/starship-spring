@@ -38,7 +38,7 @@ public class ThrusterBlock : MonoBehaviour
         SetThrusterIntensity(-direction);
     }
 
-    void FixedUpdate()
+    public void Stop()
     {
         SetThrusterIntensity(Vector2.zero);
     }

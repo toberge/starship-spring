@@ -1527,7 +1527,7 @@ MonoBehaviour:
   damagedLayers:
     serializedVersion: 2
     m_Bits: 2048
-  damage: 50
+  damage: 100
   damageDelay: 0.05
 --- !u!50 &1334060548
 Rigidbody2D:
@@ -1564,7 +1564,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1}
-  m_Size: {x: 0.5, y: 2.0000005}
+  m_Size: {x: 0.1, y: 2.0000005}
   m_Direction: 0
 --- !u!82 &1334060550
 AudioSource:

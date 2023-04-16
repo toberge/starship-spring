@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour
 
         transform.position = Motion.PositionAt(Time.time);
 
-        if (Mathf.Abs(transform.position.x) > Arena.Width / 2 || Mathf.Abs(transform.position.y) > Arena.Height / 2)
+        if (Arena.IsOutsideArena(transform.position))
         {
             Destroy(gameObject);
         }

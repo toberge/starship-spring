@@ -144,7 +144,7 @@ MonoBehaviour:
   damage: 20
   damagedLayers:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 256
 --- !u!50 &-3894129129574427785
 Rigidbody2D:
   serializedVersion: 4

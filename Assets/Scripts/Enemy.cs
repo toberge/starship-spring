@@ -5,16 +5,18 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D body;
     private Hitbox hitbox;
     private Cannon cannon;
+    private ThrusterBlock thruster;
 
     [SerializeField]
     private GameObject explosion;
 
     [SerializeField]
-    private float moveSpeed = 5;
+    private float moveForce = 1;
 
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        thruster = GetComponent<ThrusterBlock>();
         hitbox = GetComponent<Hitbox>();
         hitbox.OnDeath += OnDeath;
         hitbox.OnHit += (damage, remainingHealth) => Debug.Log($"Enemy took {damage} damage");
@@ -28,7 +30,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         var x = Mathf.Abs(transform.position.x);
         var y = Mathf.Abs(transform.position.y);
@@ -38,11 +40,11 @@ public class Enemy : MonoBehaviour
         }
         else if (x > Arena.EnemyHalfWidth)
         {
-            transform.position += Mathf.Sign(transform.position.x) * Vector3.left * Time.deltaTime * moveSpeed;
+            thruster.AddForce(Mathf.Sign(transform.position.x) * Vector3.left, Time.fixedDeltaTime * moveForce);
         }
         else
         {
-            transform.position += Mathf.Sign(transform.position.y) * Vector3.down * Time.deltaTime * moveSpeed;
+            thruster.AddForce(Mathf.Sign(transform.position.y) * Vector3.down, Time.fixedDeltaTime * moveForce);
         }
     }
 }

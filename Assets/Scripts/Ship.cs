@@ -9,10 +9,12 @@ public class Ship : MonoBehaviour
     [SerializeField]
     private Rigidbody2D leftSide;
     private Hitbox leftHitbox;
+    private ThrusterBlock leftThruster;
 
     [SerializeField]
     private Rigidbody2D rightSide;
     private Hitbox rightHitbox;
+    private ThrusterBlock rightThruster;
 
     [SerializeField]
     private ContinuousDamage spring;
@@ -36,6 +38,8 @@ public class Ship : MonoBehaviour
     {
         leftHitbox = leftSide.GetComponent<Hitbox>();
         rightHitbox = rightSide.GetComponent<Hitbox>();
+        leftThruster = leftSide.GetComponent<ThrusterBlock>();
+        rightThruster = rightSide.GetComponent<ThrusterBlock>();
         hitSound = GetComponent<AudioSource>();
 
         spring.OnKill += OnKill;
@@ -89,9 +93,7 @@ public class Ship : MonoBehaviour
             rightMovement = gamepad.rightStick.ReadValue();
         }
 
-        leftSide.AddForce(leftMovement * moveForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
-        leftSide.GetComponent<ThrusterBlock>().SetThrusterIntensity(-leftMovement);
-        rightSide.AddForce(rightMovement * moveForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
-        rightSide.GetComponent<ThrusterBlock>().SetThrusterIntensity(-rightMovement);
+        leftThruster.AddForce(leftMovement, moveForce * Time.fixedDeltaTime);
+        rightThruster.AddForce(rightMovement, moveForce * Time.fixedDeltaTime);
     }
 }

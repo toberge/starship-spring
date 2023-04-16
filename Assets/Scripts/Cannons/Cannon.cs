@@ -16,6 +16,10 @@ public class Cannon : MonoBehaviour
 
     void Update()
     {
+        //var x = Mathf.Abs(transform.position.x);
+        //var y = Mathf.Abs(transform.position.y);
+        //    if (x<Arena.EnemyHalfWidth && y<Arena.EnemyHalfHeight)
+        // if (Time.time - lastFireTime >= fireRate && Arena.IsInFiringRange(transform.position))
         if (Time.time - lastFireTime >= fireRate)
         {
             pattern.Fire(Time.time);

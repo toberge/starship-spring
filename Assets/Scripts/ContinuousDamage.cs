@@ -17,10 +17,12 @@ public class ContinuousDamage : MonoBehaviour
     private float lastDamageTime;
 
     private AudioSource audioSource;
+    private Flash flash;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        flash = GetComponent<Flash>();
     }
 
     private bool CanDamage(Collider2D other)
@@ -47,6 +49,10 @@ public class ContinuousDamage : MonoBehaviour
                 if (audioSource != null)
                 {
                     audioSource.Play();
+                }
+                if (flash != null)
+                {
+                    flash.Play();
                 }
                 OnKill?.Invoke();
             }

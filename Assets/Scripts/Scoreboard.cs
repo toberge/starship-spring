@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -41,10 +39,10 @@ public class Scoreboard : MonoBehaviour
     private void Update()
     {
         var hasGamepad = Gamepad.current != null;
-        restartInstructons.text = hasGamepad ? "Press A on your gamepad to retry" : "Press R on your keyboard to retry";
+        restartInstructons.text = hasGamepad ? "Press START on your gamepad to retry" : "Press SPACE on your keyboard to retry";
         // TODO any gamepad button
-        var gamepadPressed = hasGamepad ? Gamepad.current.aButton.wasPressedThisFrame : false;
-        var keyboardPressed = Keyboard.current != null ? Keyboard.current.rKey.wasPressedThisFrame : false;
+        var gamepadPressed = hasGamepad ? Gamepad.current.startButton.wasPressedThisFrame : false;
+        var keyboardPressed = Keyboard.current != null ? Keyboard.current.spaceKey.wasPressedThisFrame : false;
         if (canvas.enabled && (gamepadPressed || keyboardPressed))
         {
             var scene = SceneManager.GetActiveScene();

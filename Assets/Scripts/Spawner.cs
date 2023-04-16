@@ -44,6 +44,7 @@ public struct EnemySpawn
 {
     public GameObject enemy;
     public Direction side;
+    public Vector2 size;
 }
 
 [Serializable]
@@ -53,14 +54,12 @@ public struct DifficultyLevel
     public int spawnDelay;
     public int spawns;
     public int spawnsPerSide;
+    public EnemySpawn[] enemies;
 }
 
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField]
-    private EnemySpawn[] spawns;
-
     [SerializeField]
     private DifficultyLevel[] levels;
     private DifficultyLevel level;
@@ -80,22 +79,22 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        var spawn = spawns[Random.Range(0, spawns.Length)];
+        var enemy = level.enemies[Random.Range(0, level.enemies.Length)];
 
-        Vector3 position = spawn.side.ToVector();
+        Vector3 position = enemy.side.ToVector();
 
         if (Mathf.Abs(position.y) > 0)
         {
-            position *= Arena.EnemySpawnHalfHeight;
+            position *= Arena.EnemySpawnHalfHeight + (enemy.size.y + (enemy.size.y - 1) * 3) / 2;
             position += Vector3.right * Random.Range(-Arena.EnemyHalfWidth, Arena.EnemyHalfWidth);
         }
         else
         {
-            position *= Arena.EnemySpawnHalfWidth;
+            position *= Arena.EnemySpawnHalfWidth + (enemy.size.x + (enemy.size.x - 1) * 3) / 2;
             position += Vector3.up * Random.Range(-Arena.EnemyHalfHeight, Arena.EnemyHalfHeight);
         }
 
-        Instantiate(spawn.enemy, position, Quaternion.identity, transform);
+        Instantiate(enemy.enemy, position, Quaternion.identity, transform);
     }
 
     private void Update()

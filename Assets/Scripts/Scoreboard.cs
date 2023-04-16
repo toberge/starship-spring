@@ -13,6 +13,9 @@ public class Scoreboard : MonoBehaviour
     [SerializeField]
     private TMP_Text scoreText;
 
+    [SerializeField]
+    private TMP_Text restartInstructons;
+
     private float startTime;
     private Canvas canvas;
 
@@ -37,13 +40,16 @@ public class Scoreboard : MonoBehaviour
 
     private void Update()
     {
+        var hasGamepad = Gamepad.current != null;
+        restartInstructons.text = hasGamepad ? "Press A on your gamepad to retry" : "Press R on your keyboard to retry";
         // TODO any gamepad button
-        var gamepadPressed = Gamepad.current != null ? Gamepad.current.aButton.wasPressedThisFrame : false;
-        var keyboardPressed = Keyboard.current != null ? Keyboard.current.anyKey.wasPressedThisFrame : false;
+        var gamepadPressed = hasGamepad ? Gamepad.current.aButton.wasPressedThisFrame : false;
+        var keyboardPressed = Keyboard.current != null ? Keyboard.current.rKey.wasPressedThisFrame : false;
         if (canvas.enabled && (gamepadPressed || keyboardPressed))
         {
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadSceneAsync(scene.buildIndex);
         }
+
     }
 }

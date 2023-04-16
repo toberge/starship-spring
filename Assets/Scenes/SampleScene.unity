@@ -592,6 +592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ship: {fileID: 2098721033}
   scoreText: {fileID: 2122819121}
+  restartInstructons: {fileID: 824469699}
 --- !u!1 &533458131
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +875,7 @@ GameObject:
   - component: {fileID: 824469700}
   - component: {fileID: 824469699}
   m_Layer: 0
-  m_Name: Score (1)
+  m_Name: RetryInstructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1812,30 +1813,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7899fd57f132a2760b2d24c0a497e950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawns:
-  - enemy: {fileID: 525669480301788788, guid: 6885b686a71c32709a7b2d7669785b64, type: 3}
-    side: 5
-  - enemy: {fileID: 2882825906090932287, guid: 187a1f7a5e5c651dc9e9e89a8fc5f70c, type: 3}
-    side: 4
-  - enemy: {fileID: 2063514584920364999, guid: 59fafb0c3dc517828aca8769b1c24c75, type: 3}
-    side: 5
-  - enemy: {fileID: 5376527718886209954, guid: acd2ab82860f3f566b861782064e9205, type: 3}
-    side: 4
-  - enemy: {fileID: 4145029243934239420, guid: cc799b0fc6d3a94ff8f7ffcd2021b301, type: 3}
-    side: 6
   levels:
   - time: 0
-    spawnDelay: 2
+    spawnDelay: 5
     spawns: 1
     spawnsPerSide: 1
-  - time: 20
-    spawnDelay: 2
-    spawns: 1
-    spawnsPerSide: 2
+    enemies:
+    - enemy: {fileID: 2882825906090932287, guid: 187a1f7a5e5c651dc9e9e89a8fc5f70c,
+        type: 3}
+      side: 4
+      size: {x: 1, y: 1}
+    - enemy: {fileID: 525669480301788788, guid: 6885b686a71c32709a7b2d7669785b64,
+        type: 3}
+      side: 5
+      size: {x: 1, y: 1}
   - time: 40
-    spawnDelay: 1
+    spawnDelay: 8
+    spawns: 1
+    spawnsPerSide: 1
+    enemies:
+    - enemy: {fileID: 5376527718886209954, guid: acd2ab82860f3f566b861782064e9205,
+        type: 3}
+      side: 4
+      size: {x: 1, y: 2}
+    - enemy: {fileID: 2063514584920364999, guid: 59fafb0c3dc517828aca8769b1c24c75,
+        type: 3}
+      side: 5
+      size: {x: 2, y: 1}
+  - time: 60
+    spawnDelay: 10
     spawns: 2
-    spawnsPerSide: 2
+    spawnsPerSide: 1
+    enemies:
+    - enemy: {fileID: 2882825906090932287, guid: 187a1f7a5e5c651dc9e9e89a8fc5f70c,
+        type: 3}
+      side: 4
+      size: {x: 1, y: 1}
+    - enemy: {fileID: 525669480301788788, guid: 6885b686a71c32709a7b2d7669785b64,
+        type: 3}
+      side: 5
+      size: {x: 1, y: 1}
+    - enemy: {fileID: 5376527718886209954, guid: acd2ab82860f3f566b861782064e9205,
+        type: 3}
+      side: 4
+      size: {x: 1, y: 2}
+    - enemy: {fileID: 2063514584920364999, guid: 59fafb0c3dc517828aca8769b1c24c75,
+        type: 3}
+      side: 5
+      size: {x: 2, y: 1}
+  - time: 120
+    spawnDelay: 10
+    spawns: 1
+    spawnsPerSide: 1
+    enemies:
+    - enemy: {fileID: 4145029243934239420, guid: cc799b0fc6d3a94ff8f7ffcd2021b301,
+        type: 3}
+      side: 6
+      size: {x: 2, y: 2}
+  - time: 200
+    spawnDelay: 10
+    spawns: 2
+    spawnsPerSide: 1
+    enemies:
+    - enemy: {fileID: 4145029243934239420, guid: cc799b0fc6d3a94ff8f7ffcd2021b301,
+        type: 3}
+      side: 6
+      size: {x: 2, y: 2}
+    - enemy: {fileID: 5376527718886209954, guid: acd2ab82860f3f566b861782064e9205,
+        type: 3}
+      side: 4
+      size: {x: 1, y: 2}
+    - enemy: {fileID: 2063514584920364999, guid: 59fafb0c3dc517828aca8769b1c24c75,
+        type: 3}
+      side: 5
+      size: {x: 2, y: 1}
 --- !u!1 &1718050934
 GameObject:
   m_ObjectHideFlags: 0

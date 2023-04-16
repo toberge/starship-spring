@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class HealthBar : MonoBehaviour
@@ -48,11 +50,13 @@ public class HealthBar : MonoBehaviour
 
     private void SetLeftHealth(float health)
     {
-        material.SetFloat("_LeftHealth", health / leftHitbox.MaxHealth);
+        Debug.Log(health / leftHitbox.MaxHealth);
+        material.SetFloat("_LeftHealth", Mathf.Clamp(health / leftHitbox.MaxHealth, 0.01f, 0.999f));
     }
 
     private void SetRightHealth(float health)
     {
-        material.SetFloat("_RightHealth", health / rightHitbox.MaxHealth);
+        Debug.Log(health / leftHitbox.MaxHealth);
+        material.SetFloat("_RightHealth", Mathf.Clamp(health / rightHitbox.MaxHealth, 0.01f, 0.999f));
     }
 }

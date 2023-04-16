@@ -50,6 +50,5 @@ public class Scoreboard : MonoBehaviour
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadSceneAsync(scene.buildIndex);
         }
-
     }
 }

@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 492163277}
   - component: {fileID: 492163280}
   - component: {fileID: 492163281}
+  - component: {fileID: 492163282}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -593,6 +594,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startInstructions: {fileID: 824469699}
   controlInstructions: {fileID: 2124590714}
+--- !u!114 &492163282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492163275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903a1d7ecb803f029a40601c9349b7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &824469697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,6 +1548,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7827129995261499815, guid: 7125a72e19584afab9e7b3a7ca1e8257,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7827129995700015394, guid: 7125a72e19584afab9e7b3a7ca1e8257,
         type: 3}
       propertyPath: curve.m_Curve.Array.data[0].time
@@ -1559,6 +1577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827129995994777132, guid: 7125a72e19584afab9e7b3a7ca1e8257,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7827129995994777133, guid: 7125a72e19584afab9e7b3a7ca1e8257,
         type: 3}

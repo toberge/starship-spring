@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Straight : Motion
+public class StraightMotion : Motion
 {
     private Vector3 startPosition;
     private Vector3 direction;
@@ -8,7 +8,7 @@ public class Straight : Motion
     private float acceleration;
     private float startTime;
 
-    public Straight(Vector3 startPosition, Vector3 direction, float startSpeed, float acceleration)
+    public StraightMotion(Vector3 startPosition, Vector3 direction, float startSpeed, float acceleration)
     {
         this.startPosition = startPosition;
         this.direction = direction;

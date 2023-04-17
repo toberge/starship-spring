@@ -19,6 +19,6 @@ public class SpiralPattern : Pattern
         float angle = time * anglesPerSecond;
         var launchDirection = Quaternion.AngleAxis(angle, Vector3.forward) * direction;
         var launchedBullet = Instantiate(bullet, transform.position, transform.rotation);
-        launchedBullet.Motion = new Straight(transform.position, launchDirection, startSpeed, acceleration);
+        launchedBullet.Motion = new StraightMotion(transform.position, launchDirection, startSpeed, acceleration);
     }
 }

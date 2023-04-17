@@ -14,11 +14,11 @@ public class LinearPattern : Pattern
     private void LaunchBullet(Bullet bullet, Vector3 direction)
     {
         var launchedBullet = Instantiate(bullet, transform.position, transform.rotation);
-        launchedBullet.Motion = new Straight(transform.position, direction, startSpeed, acceleration);
+        launchedBullet.Motion = new StraightMotion(transform.position, direction, startSpeed, acceleration);
     }
 
     public override void Fire(float time, Vector3 direction)
     {
-        LaunchBullet(bullet, transform.TransformDirection(direction));
+        LaunchBullet(bullet, direction);
     }
 }

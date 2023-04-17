@@ -10,11 +10,13 @@ public class Ship : MonoBehaviour
     private Rigidbody2D leftSide;
     private Hitbox leftHitbox;
     private ThrusterBlock leftThruster;
+    public Transform LeftSide => leftSide.transform;
 
     [SerializeField]
     private Rigidbody2D rightSide;
     private Hitbox rightHitbox;
     private ThrusterBlock rightThruster;
+    public Transform RightSide => rightSide.transform;
 
     [SerializeField]
     private ContinuousDamage spring;

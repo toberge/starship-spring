@@ -1779,6 +1779,14 @@ MonoBehaviour:
         type: 3}
       side: 6
       size: {x: 1, y: 1}
+    - enemy: {fileID: 7034950556722770138, guid: 04a27aad643be3bafbdcfde94171dd82,
+        type: 3}
+      side: 6
+      size: {x: 1, y: 1}
+    - enemy: {fileID: 3695756440205483698, guid: 6e88bc3282e59d1ec8898ce97b4b29f7,
+        type: 3}
+      side: 6
+      size: {x: 1, y: 1}
   - time: 20
     spawnDelay: 5
     spawns: 2
@@ -1835,6 +1843,10 @@ MonoBehaviour:
         type: 3}
       side: 6
       size: {x: 2, y: 1}
+    - enemy: {fileID: 7034950556722770138, guid: 04a27aad643be3bafbdcfde94171dd82,
+        type: 3}
+      side: 6
+      size: {x: 1, y: 1}
 --- !u!1 &1718050934
 GameObject:
   m_ObjectHideFlags: 0

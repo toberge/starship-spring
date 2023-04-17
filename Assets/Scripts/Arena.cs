@@ -17,8 +17,21 @@ public class Arena
     {
         return (Mathf.Abs(position.x) < Arena.EnemyHalfWidth && Mathf.Abs(position.y) < Arena.EnemyHalfHeight);
     }
+
     public static bool IsOutsideArena(Vector3 position)
     {
         return (Mathf.Abs(position.x) > Arena.HalfWidth + OutsideThreshold && Mathf.Abs(position.y) > Arena.HalfHeight + OutsideThreshold);
+    }
+
+    public static Vector3 DirectionIntoArena(Vector3 position)
+    {
+        if (Mathf.Abs(position.x) > Mathf.Abs(position.y))
+        {
+            return position.x > 0 ? Vector3.left : Vector3.right;
+        }
+        else
+        {
+            return position.y > 0 ? Vector3.down : Vector3.up;
+        }
     }
 }

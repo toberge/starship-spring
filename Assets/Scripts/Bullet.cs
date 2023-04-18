@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour
     private Color color2;
 
     [SerializeField]
+    private Explosion explosion;
+
+    [SerializeField]
     private AnimationCurve pulseCurve;
 
     private float startTime;
@@ -38,7 +41,7 @@ public class Bullet : MonoBehaviour
         }
         if (isDamaged)
         {
-            // TODO spawn explosion or sth
+            Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

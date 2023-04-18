@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color1: {r: 1, g: 0.19980164, b: 0.042984664, a: 1}
   color2: {r: 0.990566, g: 0.56295586, b: 0.126157, a: 1}
+  explosion: {fileID: 6378764776193115136, guid: eeae213efc5403158be80680da78ce6e,
+    type: 3}
   pulseCurve:
     serializedVersion: 2
     m_Curve:

@@ -23,7 +23,7 @@ public class Arena
         return (Mathf.Abs(position.x) > Arena.HalfWidth + OutsideThreshold && Mathf.Abs(position.y) > Arena.HalfHeight + OutsideThreshold);
     }
 
-    public static Vector3 DirectionIntoArena(Vector3 position)
+    public static Vector3 VectorIntoArena(Vector3 position)
     {
         if (Mathf.Abs(position.x) > Mathf.Abs(position.y))
         {
@@ -32,6 +32,18 @@ public class Arena
         else
         {
             return position.y > 0 ? Vector3.down : Vector3.up;
+        }
+    }
+
+    public static Direction RelativeDirectionIntoArena(Vector3 position)
+    {
+        if (Mathf.Abs(position.x) > Mathf.Abs(position.y))
+        {
+            return position.x > 0 ? Direction.LEFT : Direction.RIGHT;
+        }
+        else
+        {
+            return position.y > 0 ? Direction.DOWN : Direction.UP;
         }
     }
 }

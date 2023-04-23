@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2399846196499180169}
   - component: {fileID: -1150623604760843311}
   - component: {fileID: 9065211102182747321}
+  - component: {fileID: 7961018078929443333}
+  - component: {fileID: 1815870082767135569}
   m_Layer: 11
   m_Name: ThrusterBlock
   m_TagString: Untagged
@@ -157,6 +159,35 @@ MonoBehaviour:
   explosion: {fileID: 8615003321379890237, guid: 6db4bb09e74346e789fd5e78c2a62f9d,
     type: 3}
   moveForce: 1
+--- !u!114 &7961018078929443333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399846196499180147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85dddb44b1788c91bde3a6c09a937b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: 0}
+  down: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+--- !u!114 &1815870082767135569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399846196499180147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca786e60a5cdee6ddbf83830f3a15c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 1, y: 1}
 --- !u!1 &2399846196602588297
 GameObject:
   m_ObjectHideFlags: 0

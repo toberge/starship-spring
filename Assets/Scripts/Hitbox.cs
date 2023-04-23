@@ -10,8 +10,9 @@ public class Hitbox : MonoBehaviour
     public float MaxHealth => maxHealth;
 
     private float health;
+    public bool IsDead => health == 0;
 
-    private void Start()
+    private void Awake()
     {
         health = maxHealth;
     }

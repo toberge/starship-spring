@@ -1769,88 +1769,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7899fd57f132a2760b2d24c0a497e950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - time: 0
-    spawnDelay: 5
-    spawns: 1
-    spawnsPerSide: 1
-    enemies:
-    - enemy: {fileID: 3695756440205483698, guid: 8ed55f8ee20f78ed6bc6de091d246a20,
-        type: 3}
-      side: 6
-      size: {x: 1, y: 1}
-    - enemy: {fileID: 7034950556722770138, guid: 04a27aad643be3bafbdcfde94171dd82,
-        type: 3}
-      side: 6
-      size: {x: 1, y: 1}
-    - enemy: {fileID: 3695756440205483698, guid: 6e88bc3282e59d1ec8898ce97b4b29f7,
-        type: 3}
-      side: 6
-      size: {x: 1, y: 1}
-    - enemy: {fileID: 3695756440205483698, guid: 2346e4f66e901ab339663588dd12e672,
-        type: 3}
-      side: 6
-      size: {x: 1, y: 1}
-  - time: 20
-    spawnDelay: 5
-    spawns: 2
-    spawnsPerSide: 1
-    enemies:
-    - enemy: {fileID: 5376527718886209954, guid: acd2ab82860f3f566b861782064e9205,
-        type: 3}
-      side: 6
-      size: {x: 1, y: 2}
-    - enemy: {fileID: 2063514584920364999, guid: 59fafb0c3dc517828aca8769b1c24c75,
-        type: 3}
-      side: 6
-      size: {x: 2, y: 1}
-  - time: 40
-    spawnDelay: 5
-    spawns: 2
-    spawnsPerSide: 1
-    enemies:
-    - enemy: {fileID: 3695756440205483698, guid: 8ed55f8ee20f78ed6bc6de091d246a20,
-        type: 3}
-      side: 6
-      size: {x: 1, y: 1}
-    - enemy: {fileID: 2063514584920364999, guid: 59fafb0c3dc517828aca8769b1c24c75,
-        type: 3}
-      side: 6
-      size: {x: 2, y: 1}
-    - enemy: {fileID: 5376527718886209954, guid: acd2ab82860f3f566b861782064e9205,
-        type: 3}
-      side: 6
-      size: {x: 1, y: 2}
-  - time: 60
-    spawnDelay: 5
-    spawns: 1
-    spawnsPerSide: 1
-    enemies:
-    - enemy: {fileID: 4145029243934239420, guid: cc799b0fc6d3a94ff8f7ffcd2021b301,
-        type: 3}
-      side: 6
-      size: {x: 2, y: 2}
-  - time: 100
-    spawnDelay: 5
-    spawns: 2
-    spawnsPerSide: 1
-    enemies:
-    - enemy: {fileID: 4145029243934239420, guid: cc799b0fc6d3a94ff8f7ffcd2021b301,
-        type: 3}
-      side: 6
-      size: {x: 2, y: 2}
-    - enemy: {fileID: 5376527718886209954, guid: acd2ab82860f3f566b861782064e9205,
-        type: 3}
-      side: 6
-      size: {x: 1, y: 2}
-    - enemy: {fileID: 2063514584920364999, guid: 59fafb0c3dc517828aca8769b1c24c75,
-        type: 3}
-      side: 6
-      size: {x: 2, y: 1}
-    - enemy: {fileID: 7034950556722770138, guid: 04a27aad643be3bafbdcfde94171dd82,
-        type: 3}
-      side: 6
-      size: {x: 1, y: 1}
+  spawns:
+  - threshold: 0
+    enemy: {fileID: 808191316636768144, guid: 8ed55f8ee20f78ed6bc6de091d246a20, type: 3}
+  - threshold: 10
+    enemy: {fileID: 6476063136894581240, guid: 04a27aad643be3bafbdcfde94171dd82, type: 3}
+  - threshold: 20
+    enemy: {fileID: 808191316636768144, guid: 6e88bc3282e59d1ec8898ce97b4b29f7, type: 3}
+  - threshold: 30
+    enemy: {fileID: 808191316636768144, guid: 2346e4f66e901ab339663588dd12e672, type: 3}
+  - threshold: 30
+    enemy: {fileID: 808191316636768144, guid: 2346e4f66e901ab339663588dd12e672, type: 3}
+  - threshold: 30
+    enemy: {fileID: -7943854480780548982, guid: acd2ab82860f3f566b861782064e9205,
+      type: 3}
+  - threshold: 30
+    enemy: {fileID: 5188026501780130543, guid: 59fafb0c3dc517828aca8769b1c24c75, type: 3}
+  - threshold: 30
+    enemy: {fileID: 276627805136181339, guid: cc799b0fc6d3a94ff8f7ffcd2021b301, type: 3}
+  spawnDelayCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.3196583
+      outSlope: -0.3196583
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.28095368
+      value: 0.9101908
+      inSlope: -0.72276676
+      outSlope: -0.72276676
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7479829
+      value: 0.38437414
+      inSlope: -0.928733
+      outSlope: -0.928733
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.20000076
+      inSlope: -0.7315908
+      outSlope: -0.7315908
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  initialSpawnDelay: 10
+  difficultyScaleTime: 60
 --- !u!1 &1718050934
 GameObject:
   m_ObjectHideFlags: 0

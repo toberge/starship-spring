@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -42,35 +43,34 @@ public static class DirectionExtension
 [Serializable]
 public struct EnemySpawn
 {
-    public GameObject enemy;
-    public Direction side;
-    public Vector2 size;
+    public float threshold;
+    public EnemyLayout enemy;
 }
-
-[Serializable]
-public struct DifficultyLevel
-{
-    public float time;
-    public int spawnDelay;
-    public int spawns;
-    public int spawnsPerSide;
-    public EnemySpawn[] enemies;
-}
-
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField]
-    private DifficultyLevel[] levels;
-    private DifficultyLevel level;
-    private int nextLevelIndex = 1;
+    private EnemySpawn[] spawns;
+
+    [SerializeField]
+    private AnimationCurve spawnDelayCurve;
+
+    private int minSpawn = 0;
+    private int maxSpawn = 1;
 
     private float lastSpawnTime = -100;
     private float startTime;
 
+    [SerializeField]
+    private float initialSpawnDelay = 10;
+
+    [SerializeField]
+    private float difficultyScaleTime = 60;
+
+    private float spawnsPerTick = 1;
+
     private void Start()
     {
-        level = levels[0];
         startTime = Time.time;
 
         // Ignore collisions between enclosure walls and enemies
@@ -79,35 +79,34 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        var enemy = level.enemies[Random.Range(0, level.enemies.Length)];
+        var enemy = spawns.Skip(minSpawn).Take(maxSpawn).ElementAt(Random.Range(0, maxSpawn - minSpawn)).enemy;
 
-        Vector3 position = enemy.side.ToVector();
+        Vector3 position = Direction.ANY.ToVector();
 
         if (Mathf.Abs(position.y) > 0)
         {
-            position *= Arena.EnemySpawnHalfHeight + (enemy.size.y + (enemy.size.y - 1) * 3) / 2;
+            position *= Arena.EnemySpawnHalfHeight + (enemy.Size.y + (enemy.Size.y - 1) * 3) / 2;
             position += Vector3.right * Random.Range(-Arena.EnemyHalfWidth, Arena.EnemyHalfWidth);
         }
         else
         {
-            position *= Arena.EnemySpawnHalfWidth + (enemy.size.x + (enemy.size.x - 1) * 3) / 2;
+            position *= Arena.EnemySpawnHalfWidth + (enemy.Size.x + (enemy.Size.x - 1) * 3) / 2;
             position += Vector3.up * Random.Range(-Arena.EnemyHalfHeight, Arena.EnemyHalfHeight);
         }
 
-        Instantiate(enemy.enemy, position, Quaternion.identity, transform);
+        Instantiate(enemy, position, Quaternion.identity, transform);
     }
 
     private void Update()
     {
-        if (nextLevelIndex < levels.Length - 1 && Time.time - startTime > levels[nextLevelIndex].time)
+        if (maxSpawn < spawns.Length - 1 && Time.time - startTime > spawns[maxSpawn].threshold)
         {
-            level = levels[nextLevelIndex];
-            nextLevelIndex++;
+            maxSpawn++;
         }
 
-        if (Time.time - lastSpawnTime > level.spawnDelay)
+        if (Time.time - lastSpawnTime > initialSpawnDelay * spawnDelayCurve.Evaluate((Time.time - startTime) / difficultyScaleTime))
         {
-            for (int i = 0; i < level.spawns; i++)
+            for (int i = 0; i < spawnsPerTick; i++)
             {
                 Spawn();
             }

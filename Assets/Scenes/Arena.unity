@@ -1831,6 +1831,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   initialSpawnDelay: 10
   difficultyScaleTime: 60
+  player: {fileID: 2098721033}
 --- !u!1 &1718050934
 GameObject:
   m_ObjectHideFlags: 0

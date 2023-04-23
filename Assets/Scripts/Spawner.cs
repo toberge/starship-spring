@@ -69,12 +69,23 @@ public class Spawner : MonoBehaviour
 
     private float spawnsPerTick = 1;
 
+    [SerializeField]
+    private Ship player;
+
+    private bool gameOver = false;
+
     private void Start()
     {
         startTime = Time.time;
+        player.OnDeath += OnDeath;
 
         // Ignore collisions between enclosure walls and enemies
         Physics2D.IgnoreLayerCollision(10, 11);
+    }
+
+    private void OnDeath()
+    {
+        gameOver = true;
     }
 
     private void Spawn()
@@ -99,6 +110,11 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        if (gameOver)
+        {
+            return;
+        }
+
         if (maxSpawn < spawns.Length - 1 && Time.time - startTime > spawns[maxSpawn].threshold)
         {
             maxSpawn++;

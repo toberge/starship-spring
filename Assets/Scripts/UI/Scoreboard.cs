@@ -20,6 +20,7 @@ public class Scoreboard : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        startTime = Time.time;
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
         ship.OnDeath += OnDeath;

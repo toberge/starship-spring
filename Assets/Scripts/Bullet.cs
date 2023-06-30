@@ -48,14 +48,14 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        var color = Color.Lerp(color1, color2, pulseCurve.Evaluate((Time.time - startTime) * 2));
-        spriteRenderer.color = color;
-
-        transform.position = Motion.PositionAt(Time.time);
-
         if (Arena.IsOutsideArena(transform.position))
         {
             Destroy(gameObject);
         }
+
+        var color = Color.Lerp(color1, color2, pulseCurve.Evaluate((Time.time - startTime) * 2));
+        spriteRenderer.color = color;
+
+        transform.position = Motion.PositionAt(Time.time);
     }
 }

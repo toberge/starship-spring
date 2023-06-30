@@ -5,6 +5,7 @@ public class Ship : MonoBehaviour
 {
     public delegate void ShipEvent();
     public ShipEvent OnDeath;
+    public ShipEvent OnKill;
 
     [SerializeField]
     private Rigidbody2D leftSide;
@@ -44,7 +45,7 @@ public class Ship : MonoBehaviour
         rightThruster = rightSide.GetComponent<ThrusterBlock>();
         hitSound = GetComponent<AudioSource>();
 
-        spring.OnKill += OnKill;
+        spring.OnKill += HandleKill;
         leftHitbox.OnHit += OnHit;
         rightHitbox.OnHit += OnHit;
         leftHitbox.OnDeath += HandleDeath;
@@ -56,11 +57,13 @@ public class Ship : MonoBehaviour
         hitSound.Play();
     }
 
-    private void OnKill()
+    private void HandleKill()
     {
         var leftHealth = leftHitbox.Heal(killHealAmount);
         var rightHealth = rightHitbox.Heal(killHealAmount);
+        // TODO kill count is moved
         kills++;
+        OnKill?.Invoke();
     }
 
     private void HandleDeath(float damage, float remainingHealth)

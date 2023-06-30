@@ -56,18 +56,18 @@ public class BlockLayout : MonoBehaviour
 
     private void OnUpDeath(float damage, float remainingHealth)
     {
-        OnSideDeath.Invoke(Direction.UP);
+        OnSideDeath?.Invoke(Direction.UP);
     }
     private void OnDownDeath(float damage, float remainingHealth)
     {
-        OnSideDeath.Invoke(Direction.DOWN);
+        OnSideDeath?.Invoke(Direction.DOWN);
     }
     private void OnLeftDeath(float damage, float remainingHealth)
     {
-        OnSideDeath.Invoke(Direction.LEFT);
+        OnSideDeath?.Invoke(Direction.LEFT);
     }
     private void OnRightDeath(float damage, float remainingHealth)
     {
-        OnSideDeath.Invoke(Direction.RIGHT);
+        OnSideDeath?.Invoke(Direction.RIGHT);
     }
 }

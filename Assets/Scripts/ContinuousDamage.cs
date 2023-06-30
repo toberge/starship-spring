@@ -38,24 +38,23 @@ public class ContinuousDamage : MonoBehaviour
         }
     }
 
-
     private void DamageIfPossible(Hitbox hitbox)
     {
         if (Time.time - lastDamageTime > damageDelay)
         {
             var remainingHealth = hitbox.Damage(damage);
-            if (remainingHealth <= 0)
-            {
+            //if (remainingHealth <= 0)
+            //{
                 if (audioSource != null)
                 {
-                    audioSource.Play();
+                    audioSource?.Play();
                 }
                 if (flash != null)
                 {
                     flash.Play();
                 }
                 OnKill?.Invoke();
-            }
+            //}
             lastDamageTime = Time.time;
         }
     }

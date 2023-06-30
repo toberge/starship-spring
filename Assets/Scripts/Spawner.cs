@@ -115,7 +115,7 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        if (maxSpawn < spawns.Length - 1 && Time.time - startTime > spawns[maxSpawn].threshold)
+        while (maxSpawn < spawns.Length - 1 && Time.time - startTime > spawns[maxSpawn].threshold)
         {
             maxSpawn++;
         }

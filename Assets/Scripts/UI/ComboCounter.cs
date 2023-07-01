@@ -1,8 +1,6 @@
 using TMPro;
 using System;
 using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -40,6 +38,9 @@ public class ComboCounter : MonoBehaviour
     private ComboRating[] ratings;
     private int rating = -1;
 
+    private int score = 0;
+    public int Score => score;
+
     private int combo = 0;
     private float lastKillTime;
 
@@ -54,9 +55,16 @@ public class ComboCounter : MonoBehaviour
     {
         lastKillTime = Time.time;
         combo++;
-        if (combo <= 1) return;
+
+        if (combo <= 1)
+        {
+            AddScoreForKill();
+            return;
+        }
 
         counterText.text = $"{combo}x combo";
+
+
 
         // Check if we have a better rating
         var newRating = ratings
@@ -69,11 +77,12 @@ public class ComboCounter : MonoBehaviour
             ratingText.text = ratings[rating].name;
             ratingText.color = ratings[rating].color;
             // Set a new rotation so we're looking a little skewed
-            var rotation = Quaternion.Euler(0, 0, Random.Range(-20,20));
+            var rotation = Quaternion.Euler(0, 0, Random.Range(-20, 20));
             counterText.transform.rotation = rotation;
             ratingText.transform.rotation = rotation;
         }
 
+        AddScoreForKill();
 
         // Pop in
         counterText.transform.localScale = Vector2.one;
@@ -86,10 +95,21 @@ public class ComboCounter : MonoBehaviour
             .setEasePunch();
     }
 
+    private void AddScoreForKill()
+    {
+        // TODO Put score on the spot where the enemy was killed
+        score += (rating + 2) * combo * 100;
+        scoreText.text = $"Score: {score}";
+        scoreText.gameObject
+            .LeanScale(Vector3.one * 1.3f, popInTime)
+            .setEasePunch();
+    }
+
     private void Update()
     {
         if (combo > 0 && Time.time - lastKillTime > comboTimeout)
         {
+            // Reset combo
             combo = 0;
             rating = -1;
 

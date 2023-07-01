@@ -40,9 +40,6 @@ public class Ship : MonoBehaviour
     [SerializeField]
     private float killHealAmount = 20;
 
-    private int kills = 0;
-    public int Kills => kills;
-
     private AudioSource hitSound;
 
     private void Start()
@@ -73,8 +70,6 @@ public class Ship : MonoBehaviour
     {
         var leftHealth = leftHitbox.Heal(killHealAmount);
         var rightHealth = rightHitbox.Heal(killHealAmount);
-        // TODO kill count is moved
-        kills++;
         OnKill?.Invoke();
     }
 

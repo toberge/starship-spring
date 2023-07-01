@@ -6,35 +6,22 @@ using UnityEngine.SceneManagement;
 public class Scoreboard : MonoBehaviour
 {
     [SerializeField]
-    private Ship ship;
-
-    [SerializeField]
-    private TMP_Text scoreText;
-
-    [SerializeField]
     private TMP_Text restartInstructons;
 
     private float startTime;
     private Canvas canvas;
 
-    // Start is called before the first frame update
     private void Start()
     {
         startTime = Time.time;
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
-        ship.OnDeath += OnDeath;
-    }
-
-    private int Score()
-    {
-        return Mathf.RoundToInt(20 * (Time.time - startTime)) + 100 * ship.Kills;
+        FindFirstObjectByType<Ship>().OnDeath += OnDeath;
     }
 
     private void OnDeath()
     {
         canvas.enabled = true;
-        scoreText.text = Score().ToString();
     }
 
     private void Update()

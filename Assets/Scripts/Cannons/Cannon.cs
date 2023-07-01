@@ -17,6 +17,7 @@ public class Cannon : MonoBehaviour
     private BlockLayout layout;
 
     private bool isFiring;
+    private bool playerIsDead;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class Cannon : MonoBehaviour
         blockedDirection = Arena.RelativeDirectionIntoArena(transform.position);
         isFiring = !layout.IsBlocked(blockedDirection);
         layout.OnSideDeath += OnSideDeath;
+        FindFirstObjectByType<Ship>().OnDeath += OnPlayerDeath;
     }
 
     private void OnSideDeath(Direction side)
@@ -37,9 +39,14 @@ public class Cannon : MonoBehaviour
         }
     }
 
+    private void OnPlayerDeath()
+    {
+        playerIsDead = true;
+    }
+
     void Update()
     {
-        if (isFiring && Time.time - lastFireTime >= fireDelay && Arena.IsInFiringRange(transform.position))
+        if (!playerIsDead && isFiring && Time.time - lastFireTime >= fireDelay && Arena.IsInFiringRange(transform.position))
         {
             if (firstFireTime < 0)
             {

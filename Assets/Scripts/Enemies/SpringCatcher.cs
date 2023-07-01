@@ -27,7 +27,7 @@ public class SpringCatcher : MonoBehaviour
 
     private void Update()
     {
-        if (leftSide && rightSide)
+        if (leftSide && rightSide && target)
         {
             // TODO ensure you rotate properly :(
             var center = rightSide.transform.position + (leftSide.transform.position - rightSide.transform.position) / 2;
@@ -35,6 +35,12 @@ public class SpringCatcher : MonoBehaviour
             direction = Vector3.Slerp(direction, perfectDirection, 0.95f);
             leftSide.AddForce(direction, moveForce, ForceMode2D.Force);
             rightSide.AddForce(direction, moveForce, ForceMode2D.Force);
+        }
+        else
+        {
+            if (leftSide) leftSide.SetThrusterIntensity(Vector2.zero);
+            if (rightSide) rightSide.SetThrusterIntensity(Vector2.zero);
+            this.enabled = false;
         }
     }
 }

@@ -31,9 +31,12 @@ public class HomingMotion : Motion
         // TODO this should be Time.deltaTime
         var dt = launchTime - lastUpdateTime;
         lastUpdateTime = launchTime;
-        var perfectDirection = (target.position - position).normalized;
-        var homingFactor = homingFactorCurve.Evaluate(t / homingTaperTime);
-        direction = Vector3.Slerp(direction, perfectDirection, homingFactor);
+        if (target)
+        {
+            var perfectDirection = (target.position - position).normalized;
+            var homingFactor = homingFactorCurve.Evaluate(t / homingTaperTime);
+            direction = Vector3.Slerp(direction, perfectDirection, homingFactor);
+        }
         return position += direction * (startSpeed + acceleration * t) * dt;
     }
 }

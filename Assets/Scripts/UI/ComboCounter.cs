@@ -62,7 +62,8 @@ public class ComboCounter : MonoBehaviour
         var newRating = ratings
             .TakeWhile((r) => combo >= r.threshold)
             .Count() - 1;
-        if (newRating != rating) {
+        if (newRating != rating)
+        {
             // Display it
             rating = newRating;
             ratingText.text = ratings[rating].name;
@@ -76,12 +77,12 @@ public class ComboCounter : MonoBehaviour
 
         // Pop in
         counterText.transform.localScale = Vector2.one;
-        ratingText.transform.localScale = Vector2.one;
+        ratingText.transform.localScale = Vector2.one * (1f + (rating + 1) * 0.2f);
         counterText.gameObject
             .LeanScale(Vector3.one * 1.2f, popInTime)
             .setEasePunch();
         ratingText.gameObject
-            .LeanScale(Vector3.one * 1.3f, popInTime)
+            .LeanScale(Vector3.one * (1.2f + (rating + 1) * 0.3f), popInTime)
             .setEasePunch();
     }
 
@@ -93,8 +94,8 @@ public class ComboCounter : MonoBehaviour
             rating = -1;
 
             // Pop out
-            counterText.gameObject.LeanScale(Vector3.zero, popInTime);
-            ratingText.gameObject.LeanScale(Vector3.zero, popInTime);
+            counterText.gameObject.LeanScale(Vector3.zero, popInTime * .6f);
+            ratingText.gameObject.LeanScale(Vector3.zero, popInTime * .6f);
         }
     }
 }

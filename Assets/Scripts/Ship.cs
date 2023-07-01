@@ -20,6 +20,14 @@ public class Ship : MonoBehaviour
     public Transform RightSide => rightSide.transform;
 
     [SerializeField]
+    private InstantDamage leftShield;
+    private LTDescr leftShieldTween;
+
+    [SerializeField]
+    private InstantDamage rightShield;
+    private LTDescr rightShieldTween;
+
+    [SerializeField]
     private InstantDamage spring;
 
     [SerializeField]
@@ -46,8 +54,12 @@ public class Ship : MonoBehaviour
         hitSound = GetComponent<AudioSource>();
 
         spring.OnKill += HandleKill;
+        leftShield.OnKill += HandleKill;
+        rightShield.OnKill += HandleKill;
+
         leftHitbox.OnHit += OnHit;
         rightHitbox.OnHit += OnHit;
+
         leftHitbox.OnDeath += HandleDeath;
         rightHitbox.OnDeath += HandleDeath;
     }
@@ -75,12 +87,38 @@ public class Ship : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void ShieldUp()
+    {
+        // TODO make animation part of a Shield component?
+        leftShield.gameObject.SetActive(true);
+        rightShield.gameObject.SetActive(true);
+        if (leftShieldTween != null) LeanTween.cancel(leftShieldTween.id);
+        if (rightShieldTween != null) LeanTween.cancel(rightShieldTween.id);
+        leftShield.gameObject.LeanScale(2.5f * Vector3.one, .3f).setEaseInCubic();
+        rightShield.gameObject.LeanScale(2.5f * Vector3.one, .3f).setEaseInCubic();
+        leftHitbox.enabled = false;
+        rightHitbox.enabled = false;
+        // TODO disable collisions with enemies maybe?
+    }
+
+    public void ShieldDown()
+    {
+        leftShieldTween = leftShield.gameObject.LeanScale(Vector3.zero, .5f)
+            .setEaseInCubic()
+            .setOnComplete(() => leftShield.gameObject.SetActive(false));
+        rightShieldTween = rightShield.gameObject.LeanScale(Vector3.zero, .5f)
+            .setEaseInCubic()
+            .setOnComplete(() => rightShield.gameObject.SetActive(false));
+        leftHitbox.enabled = true;
+        rightHitbox.enabled = true;
+
+    }
+
     private float f(bool x)
     {
         return x ? 1 : 0;
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         var gamepad = Gamepad.current;

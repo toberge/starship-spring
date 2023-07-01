@@ -36,7 +36,7 @@ Transform:
   - {fileID: 4012795923608536255}
   - {fileID: 4031364801555299298}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6440006175352955766
 MonoBehaviour:
@@ -54,7 +54,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   shell: {fileID: 4707192048480166308}
-  spring: {fileID: 2881033263261777872}
+  content: {fileID: 2881033263261777872}
   duration: 8
 --- !u!114 &768395035859784084
 MonoBehaviour:

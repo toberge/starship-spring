@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 492163278}
   - component: {fileID: 492163277}
   - component: {fileID: 492163280}
-  - component: {fileID: 492163281}
+  - component: {fileID: 492163283}
   - component: {fileID: 492163282}
   m_Layer: 0
   m_Name: Canvas
@@ -738,21 +738,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &492163281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492163275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a6780b33947971a588535ee61dc50f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ship: {fileID: 2098721033}
-  scoreText: {fileID: 2122819121}
-  restartInstructons: {fileID: 824469699}
 --- !u!114 &492163282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,6 +750,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903a1d7ecb803f029a40601c9349b7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &492163283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492163275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0863fb8b901d00ef9299a0f8e07e0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 2098721033}
+  scoreText: {fileID: 2122819121}
+  restartInstructons: {fileID: 824469699}
 --- !u!1 &533458131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1246,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 736e93d8014511354ab2b5325a32a835, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4214e54dbc12ea3c694f6e1320652604, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

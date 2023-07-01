@@ -174,9 +174,9 @@ MonoBehaviour:
     type: 3}
   drops:
   - item: {fileID: 164889818603019606, guid: 54efbac88bd0991ab8a3d921e5508228, type: 3}
-    rarity: 0.05
+    rarity: 0.1
   - item: {fileID: 3747560085121644320, guid: 3086609381e928a1ca0cdc5356eb7baa, type: 3}
-    rarity: 0.05
+    rarity: 0.07
 --- !u!114 &7961018078929443333
 MonoBehaviour:
   m_ObjectHideFlags: 0

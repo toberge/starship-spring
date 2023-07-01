@@ -27,13 +27,17 @@ public class ExplodeOnDeath : MonoBehaviour
         Instantiate(explosion, transform.position, transform.rotation, transform.parent);
         Destroy(gameObject);
 
+        var random = Random.Range(0f, 1f);
+        var min = 0f;
         foreach (var drop in drops)
         {
-            // TODO proper weighted draw
-            if (Random.Range(0f, 1f) < 0.1)
+            // Presumes that the rarities sum up to at most 1
+            if (random >= min && random <= min + drop.rarity)
             {
                 Instantiate(drop.item, transform.position, Quaternion.identity);
+                break;
             }
+            min += drop.rarity;
         }
     }
 }

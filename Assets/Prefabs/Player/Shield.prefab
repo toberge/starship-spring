@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 714736534318404706}
   - component: {fileID: 7341109924074468095}
   - component: {fileID: 6811125001888586254}
+  - component: {fileID: 7181732046437959295}
   m_Layer: 8
   m_Name: Shield
   m_TagString: Untagged
@@ -318,3 +319,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7181732046437959295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196063040490928600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693b643d3c1476f13adf10e21e4cacda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Powerup : MonoBehaviour
@@ -26,8 +25,7 @@ public class Powerup : MonoBehaviour
         effect = GetComponent<PowerupEffect>();
         audioSource = GetComponent<AudioSource>();
 
-        material = shell.material;
-        material = Instantiate(material);
+        material = Instantiate(shell.material);
         shell.material = material;
     }
 

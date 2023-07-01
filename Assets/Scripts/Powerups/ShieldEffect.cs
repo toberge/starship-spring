@@ -6,13 +6,13 @@ public class ShieldEffect : PowerupEffect
     {
         applied++;
         if (applied == 1)
-            ship.ShieldUp();
+            ship.RaiseShields();
     }
 
     public override void Remove(Ship ship)
     {
         applied--;
         if (applied == 0)
-            ship.ShieldDown();
+            ship.LowerShields();
     }
 }

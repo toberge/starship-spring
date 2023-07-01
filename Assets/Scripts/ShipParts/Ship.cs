@@ -20,11 +20,11 @@ public class Ship : MonoBehaviour
     public Transform RightSide => rightSide.transform;
 
     [SerializeField]
-    private InstantDamage leftShield;
+    private Shield leftShield;
     private LTDescr leftShieldTween;
 
     [SerializeField]
-    private InstantDamage rightShield;
+    private Shield rightShield;
     private LTDescr rightShieldTween;
 
     [SerializeField]
@@ -54,8 +54,8 @@ public class Ship : MonoBehaviour
         hitSound = GetComponent<AudioSource>();
 
         spring.OnKill += HandleKill;
-        leftShield.OnKill += HandleKill;
-        rightShield.OnKill += HandleKill;
+        leftShield.GetComponent<InstantDamage>().OnKill += HandleKill;
+        rightShield.GetComponent<InstantDamage>().OnKill += HandleKill;
 
         leftHitbox.OnHit += OnHit;
         rightHitbox.OnHit += OnHit;
@@ -87,31 +87,21 @@ public class Ship : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void ShieldUp()
+    public void RaiseShields()
     {
-        // TODO make animation part of a Shield component?
-        leftShield.gameObject.SetActive(true);
-        rightShield.gameObject.SetActive(true);
-        if (leftShieldTween != null) LeanTween.cancel(leftShieldTween.id);
-        if (rightShieldTween != null) LeanTween.cancel(rightShieldTween.id);
-        leftShield.gameObject.LeanScale(2.5f * Vector3.one, .3f).setEaseInCubic();
-        rightShield.gameObject.LeanScale(2.5f * Vector3.one, .3f).setEaseInCubic();
+        leftShield.Raise();
+        rightShield.Raise();
         leftHitbox.enabled = false;
         rightHitbox.enabled = false;
         // TODO disable collisions with enemies maybe?
     }
 
-    public void ShieldDown()
+    public void LowerShields()
     {
-        leftShieldTween = leftShield.gameObject.LeanScale(Vector3.zero, .5f)
-            .setEaseInCubic()
-            .setOnComplete(() => leftShield.gameObject.SetActive(false));
-        rightShieldTween = rightShield.gameObject.LeanScale(Vector3.zero, .5f)
-            .setEaseInCubic()
-            .setOnComplete(() => rightShield.gameObject.SetActive(false));
+        leftShield.Lower();
+        rightShield.Lower();
         leftHitbox.enabled = true;
         rightHitbox.enabled = true;
-
     }
 
     private float f(bool x)

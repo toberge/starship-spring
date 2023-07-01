@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7827129995700015834}
   - component: {fileID: 7827129995700015399}
   - component: {fileID: 7827129995700015396}
-  - component: {fileID: 7827129995700015398}
+  - component: {fileID: 21211045139648828}
   - component: {fileID: 7827129995700015392}
   - component: {fileID: 7827129995700015393}
   - component: {fileID: 7827129995700015395}
@@ -88,7 +88,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7827129995700015398
+--- !u!114 &21211045139648828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,14 +97,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7827129995700015835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce61141e6c1a55a31a16b23c4bba1c2e, type: 3}
+  m_Script: {fileID: 11500000, guid: f980eb1a39981ac12bc105c7ab9a9e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damagedLayers:
     serializedVersion: 2
     m_Bits: 2048
   damage: 100
-  damageDelay: 0.05
+  effectDelay: 0.1
 --- !u!70 &7827129995700015392
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -115,6 +115,25 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -138,6 +157,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -342,7 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftSide: {fileID: 5607678783118843433}
   rightSide: {fileID: 7827129996222922585}
-  spring: {fileID: 7827129995700015398}
+  spring: {fileID: 21211045139648828}
   explosion: {fileID: 8615003321379890237, guid: 6db4bb09e74346e789fd5e78c2a62f9d,
     type: 3}
   moveForce: 10
@@ -448,7 +473,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 7827129995994777133}
     m_Modifications:
     - target: {fileID: 2399846196499180146, guid: f7a8f49e8d8693fa7891ec4c8b8de480,
@@ -548,7 +573,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: cf7704527a570bb6c898c502a4d659dd, type: 2}
     m_RemovedComponents:
     - {fileID: 9065211102182747321, guid: f7a8f49e8d8693fa7891ec4c8b8de480, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7a8f49e8d8693fa7891ec4c8b8de480, type: 3}
 --- !u!50 &7827129996222922585 stripped
 Rigidbody2D:
@@ -567,7 +594,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 7827129995994777133}
     m_Modifications:
     - target: {fileID: 2399846196499180146, guid: f7a8f49e8d8693fa7891ec4c8b8de480,
@@ -667,11 +694,21 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ac9242b4df5abde4cb534c7cab94d455, type: 2}
     m_RemovedComponents:
     - {fileID: 9065211102182747321, guid: f7a8f49e8d8693fa7891ec4c8b8de480, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2399846196499180146, guid: f7a8f49e8d8693fa7891ec4c8b8de480,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7827129995700015834}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2399846196499180147, guid: f7a8f49e8d8693fa7891ec4c8b8de480,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7827129995820332121}
+    - targetCorrespondingSourceObject: {fileID: 2399846196499180147, guid: f7a8f49e8d8693fa7891ec4c8b8de480,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7827129995820332122}
   m_SourcePrefab: {fileID: 100100000, guid: f7a8f49e8d8693fa7891ec4c8b8de480, type: 3}
 --- !u!50 &5607678783118843433 stripped
 Rigidbody2D:
@@ -704,6 +741,7 @@ SpringJoint2D:
   m_ConnectedRigidBody: {fileID: 7827129996222922585}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
+  m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0.5, y: 0}
   m_ConnectedAnchor: {x: -0.5, y: 0}

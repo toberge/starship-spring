@@ -20,7 +20,7 @@ public class Ship : MonoBehaviour
     public Transform RightSide => rightSide.transform;
 
     [SerializeField]
-    private ContinuousDamage spring;
+    private InstantDamage spring;
 
     [SerializeField]
     private GameObject explosion;
@@ -75,7 +75,7 @@ public class Ship : MonoBehaviour
         Destroy(gameObject);
     }
 
-    float f(bool x)
+    private float f(bool x)
     {
         return x ? 1 : 0;
     }

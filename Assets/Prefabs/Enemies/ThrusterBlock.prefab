@@ -172,6 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 8615003321379890237, guid: 6db4bb09e74346e789fd5e78c2a62f9d,
     type: 3}
+  drops:
+  - item: {fileID: 164889818603019606, guid: 54efbac88bd0991ab8a3d921e5508228, type: 3}
+    rarity: 0.05
 --- !u!114 &7961018078929443333
 MonoBehaviour:
   m_ObjectHideFlags: 0

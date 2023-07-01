@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         var isDamaged = (damagedLayers.value & (1 << other.gameObject.layer)) > 0;
         if (isDamaged && other.gameObject.TryGetComponent<Hitbox>(out var hitbox))

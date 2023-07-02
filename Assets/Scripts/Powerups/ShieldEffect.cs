@@ -4,9 +4,9 @@ public class ShieldEffect : PowerupEffect
 
     public override void Apply(Ship ship)
     {
-        applied++;
-        if (applied == 1)
+        if (applied == 0)
             ship.RaiseShields();
+        applied++;
     }
 
     public override void Remove(Ship ship)

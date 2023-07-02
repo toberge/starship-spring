@@ -33,8 +33,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4012795923608536255}
   - {fileID: 4031364801555299298}
+  - {fileID: 4012795923608536255}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54,7 +54,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   shell: {fileID: 4707192048480166308}
-  content: {fileID: 2881033263261777872}
+  content: {fileID: 4012795923608536255}
   duration: 8
 --- !u!114 &768395035859784084
 MonoBehaviour:
@@ -398,12 +398,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b27fbdd295ada04df89b101d47c30986, type: 3}
---- !u!23 &2881033263261777872 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: b27fbdd295ada04df89b101d47c30986,
-    type: 3}
-  m_PrefabInstance: {fileID: 3475347196800394068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4012795923608536255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b27fbdd295ada04df89b101d47c30986,

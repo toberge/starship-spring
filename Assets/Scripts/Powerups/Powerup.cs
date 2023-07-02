@@ -10,7 +10,7 @@ public class Powerup : MonoBehaviour
     private MeshRenderer shell;
 
     [SerializeField]
-    private MeshRenderer content;
+    private Transform content;
 
     [SerializeField]
     private float duration = 8;

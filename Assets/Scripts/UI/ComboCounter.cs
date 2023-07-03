@@ -47,6 +47,7 @@ public class ComboCounter : MonoBehaviour
     private void Start()
     {
         ship.OnKill += OnKill;
+        ship.OnDeath += ResetCombo;
         counterText.text = "";
         ratingText.text = "";
     }
@@ -98,24 +99,29 @@ public class ComboCounter : MonoBehaviour
     private void AddScoreForKill()
     {
         // TODO Put score on the spot where the enemy was killed
-        score += (rating + 2) * combo * 100;
+        score += (rating + 2) * 100;
         scoreText.text = $"Score: {score}";
         scoreText.gameObject
             .LeanScale(Vector3.one * 1.3f, popInTime)
             .setEasePunch();
     }
 
+    private void ResetCombo()
+    {
+        // Reset combo
+        combo = 0;
+        rating = -1;
+
+        // Pop out
+        counterText.gameObject.LeanScale(Vector3.zero, popInTime * .6f);
+        ratingText.gameObject.LeanScale(Vector3.zero, popInTime * .6f);
+    }
+
     private void Update()
     {
         if (combo > 0 && Time.time - lastKillTime > comboTimeout)
         {
-            // Reset combo
-            combo = 0;
-            rating = -1;
-
-            // Pop out
-            counterText.gameObject.LeanScale(Vector3.zero, popInTime * .6f);
-            ratingText.gameObject.LeanScale(Vector3.zero, popInTime * .6f);
+            ResetCombo();
         }
     }
 }

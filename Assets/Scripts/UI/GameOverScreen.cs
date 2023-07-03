@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,7 @@ public class Scoreboard : MonoBehaviour
 
     private float startTime;
     private Canvas canvas;
+    private bool restarted;
 
     private void Start()
     {
@@ -21,6 +23,14 @@ public class Scoreboard : MonoBehaviour
 
     private void OnDeath()
     {
+        StartCoroutine(WaitAndDisplayDeathScreen());
+    }
+
+    private IEnumerator WaitAndDisplayDeathScreen()
+    {
+        yield return new WaitForSecondsRealtime(.4f);
+
+        restartInstructons.transform.parent.LeanScale(Vector3.one * 1.3f, .3f).setEasePunch();
         canvas.enabled = true;
     }
 
@@ -31,10 +41,14 @@ public class Scoreboard : MonoBehaviour
         // TODO any gamepad button
         var gamepadPressed = hasGamepad ? Gamepad.current.startButton.wasPressedThisFrame : false;
         var keyboardPressed = Keyboard.current != null ? Keyboard.current.spaceKey.wasPressedThisFrame : false;
-        if (canvas.enabled && (gamepadPressed || keyboardPressed))
+        if (!restarted && canvas.enabled && (gamepadPressed || keyboardPressed))
         {
-            var scene = SceneManager.GetActiveScene();
-            SceneManager.LoadSceneAsync(scene.buildIndex);
+            restarted = true;
+            restartInstructons.transform.parent.LeanScale(Vector3.zero, .2f).setEaseOutCubic().setOnComplete(() =>
+            {
+                var scene = SceneManager.GetActiveScene();
+                SceneManager.LoadSceneAsync(scene.buildIndex);
+            });
         }
     }
 }

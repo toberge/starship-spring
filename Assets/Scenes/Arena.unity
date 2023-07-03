@@ -1669,7 +1669,7 @@ MonoBehaviour:
     name: DEVIOUS
     color: {r: 0.8476653, g: 0.84860516, b: 0.1072689, a: 1}
   - threshold: 7
-    name: CAPRICIOUS
+    name: CAPTIVATING
     color: {r: 0.8569232, g: 0.5615298, b: 0.11103017, a: 1}
   - threshold: 10
     name: BALEFUL
@@ -1680,6 +1680,9 @@ MonoBehaviour:
   - threshold: 17
     name: SUPREME
     color: {r: 0.8225132, g: 0.13437998, b: 0.43762952, a: 1}
+  - threshold: 25
+    name: S.P.R.I.N.G.
+    color: {r: 0.8770084, g: 0.27669507, b: 0.7420693, a: 1}
 --- !u!1 &1245636338
 GameObject:
   m_ObjectHideFlags: 0

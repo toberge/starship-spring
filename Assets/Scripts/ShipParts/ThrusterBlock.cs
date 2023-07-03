@@ -31,6 +31,14 @@ public class ThrusterBlock : MonoBehaviour
         right.SetFloat("Intensity", Vector2.Dot(direction, transform.right));
     }
 
+    public void SetAllThrustersActive()
+    {
+        up.SetFloat("Intensity", 1);
+        down.SetFloat("Intensity", 1);
+        left.SetFloat("Intensity", 1);
+        right.SetFloat("Intensity", 1);
+    }
+
     // Must be called from FixedUpdate
     public void AddForce(Vector2 direction, float force, ForceMode2D mode = ForceMode2D.Impulse)
     {

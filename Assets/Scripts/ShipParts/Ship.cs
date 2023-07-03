@@ -108,20 +108,44 @@ public class Ship : MonoBehaviour
     {
         var gamepad = Gamepad.current;
         var keyboard = Keyboard.current;
-        Vector2 leftMovement, rightMovement;
 
         if (gamepad == null)
         {
-            leftMovement = new Vector2(f(keyboard.dKey.isPressed) - f(keyboard.aKey.isPressed), f(keyboard.wKey.isPressed) - f(keyboard.sKey.isPressed));
-            rightMovement = new Vector2(f(keyboard.lKey.isPressed) - f(keyboard.jKey.isPressed), f(keyboard.iKey.isPressed) - f(keyboard.kKey.isPressed));
+            ControlLeftSide(
+                keyboard.leftShiftKey.isPressed,
+                new Vector2(f(keyboard.dKey.isPressed) - f(keyboard.aKey.isPressed), f(keyboard.wKey.isPressed) - f(keyboard.sKey.isPressed)));
+            ControlRightSide(keyboard.rightShiftKey.isPressed,
+                new Vector2(f(keyboard.lKey.isPressed) - f(keyboard.jKey.isPressed), f(keyboard.iKey.isPressed) - f(keyboard.kKey.isPressed)));
         }
         else
         {
-            leftMovement = gamepad.leftStick.ReadValue();
-            rightMovement = gamepad.rightStick.ReadValue();
+            ControlLeftSide(gamepad.leftTrigger.isPressed || gamepad.leftShoulder.isPressed, gamepad.leftStick.ReadValue());
+            ControlRightSide(gamepad.rightTrigger.isPressed || gamepad.rightShoulder.isPressed, gamepad.rightStick.ReadValue());
         }
 
-        leftThruster.AddForce(leftMovement, moveForce * Time.fixedDeltaTime);
-        rightThruster.AddForce(rightMovement, moveForce * Time.fixedDeltaTime);
+    }
+
+    private void ControlLeftSide(bool stationary, Vector2 movement)
+    {
+        ControlSide(leftSide, leftThruster, stationary, movement);
+    }
+
+    private void ControlRightSide(bool stationary, Vector2 movement)
+    {
+        ControlSide(rightSide, rightThruster, stationary, movement);
+    }
+
+    private void ControlSide(Rigidbody2D body, ThrusterBlock thrusters, bool stationary, Vector2 movement)
+    {
+        if (stationary)
+        {
+            body.bodyType = RigidbodyType2D.Static;
+            thrusters.SetAllThrustersActive();
+        }
+        else
+        {
+            body.bodyType = RigidbodyType2D.Dynamic;
+            thrusters.AddForce(movement, moveForce * Time.fixedDeltaTime);
+        }
     }
 }

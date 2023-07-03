@@ -17,6 +17,7 @@ public class Chaser : MonoBehaviour
     private ThrusterBlock rightSide;
 
     private ThrusterBlock catchingSide;
+    private ThrusterBlock otherSide;
 
     [SerializeField]
     private float moveForce = 1;
@@ -78,6 +79,7 @@ public class Chaser : MonoBehaviour
             case State.CATCHING:
                 {
                     catchingSide.AddForce(catchingSide.transform.TransformDirection(direction), moveForce * 2, ForceMode2D.Force);
+                    otherSide.AddForce(-catchingSide.transform.TransformDirection(direction), moveForce * .7f, ForceMode2D.Force);
                     if (distance > catchThreshold)
                     {
                         endOfChaseTime = Time.time;
@@ -87,17 +89,26 @@ public class Chaser : MonoBehaviour
                 }
             case State.CHASING:
                 {
-                    // Head for where the player is
-                    // TODO turn each side separately if not aligned
+                    // Turn either side if it is not aligned
+                    leftSide.SetThrusterIntensity(Vector2.zero);
+                    rightSide.SetThrusterIntensity(Vector2.zero);
                     direction = Vector3.Slerp(direction, perfectDirection, 0.95f);
-                    leftSide.AddForce(direction, moveForce, ForceMode2D.Force);
-                    rightSide.AddForce(direction, moveForce, ForceMode2D.Force);
+                    var dot = Vector3.Dot((leftSide.transform.position - rightSide.transform.position).normalized, direction);
+                    if (dot < -0.15f)
+                    {
+                        leftSide.AddForce(direction, moveForce, ForceMode2D.Force);
+                    }
+                    else if (dot > 0.15f)
+                    {
+                        rightSide.AddForce(direction, moveForce, ForceMode2D.Force);
+                    }
+
                     if (distance < catchThreshold)
                     {
                         state = State.CATCHING;
                         bool leftIsFurthestAway = Vector3.Distance(leftSide.transform.position, target.position) > Vector3.Distance(rightSide.transform.position, target.position);
                         catchingSide = leftIsFurthestAway ? leftSide : rightSide;
-                        (leftIsFurthestAway ? rightSide : leftSide).SetThrusterIntensity(Vector2.zero);
+                        otherSide = leftIsFurthestAway ? rightSide : leftSide;
                         // Transform to local space so we keep the same direction
                         direction = catchingSide.transform.InverseTransformDirection(direction);
                     }
@@ -109,7 +120,7 @@ public class Chaser : MonoBehaviour
                 }
             case State.TURNING:
                 {
-                    // Head for where the player is
+                    // Turn around to where the player is (you overshot)
                     direction = Vector3.Slerp(direction, perfectDirection, 0.99f);
                     leftSide.AddForce(direction, moveForce * 4, ForceMode2D.Force);
                     rightSide.AddForce(direction, moveForce * 4, ForceMode2D.Force);
@@ -135,8 +146,8 @@ public class Chaser : MonoBehaviour
                 {
                     // Head for where the player is
                     direction = Vector3.Slerp(direction, perfectDirection, 0.99f);
-                    leftSide.AddForce(direction, moveForce * 2, ForceMode2D.Force);
-                    rightSide.AddForce(direction, moveForce * 2, ForceMode2D.Force);
+                    leftSide.AddForce(direction, moveForce * 4, ForceMode2D.Force);
+                    rightSide.AddForce(direction, moveForce * 4, ForceMode2D.Force);
                     if (distance < turnThreshold)
                     {
                         state = State.CHASING;

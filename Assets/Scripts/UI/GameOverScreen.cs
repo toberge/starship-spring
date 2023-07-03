@@ -23,13 +23,6 @@ public class Scoreboard : MonoBehaviour
 
     private void OnDeath()
     {
-        StartCoroutine(WaitAndDisplayDeathScreen());
-    }
-
-    private IEnumerator WaitAndDisplayDeathScreen()
-    {
-        yield return new WaitForSecondsRealtime(.4f);
-
         restartInstructons.transform.parent.LeanScale(Vector3.one * 1.3f, .3f).setEasePunch();
         canvas.enabled = true;
     }

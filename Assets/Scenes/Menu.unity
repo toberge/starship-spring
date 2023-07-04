@@ -781,13 +781,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 574358054440067853, guid: 15403c3e6e0907d10a9d8d012e135bff,
         type: 3}
+      propertyPath: m_PropertySheet.m_Int.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 574358054440067853, guid: 15403c3e6e0907d10a9d8d012e135bff,
+        type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 574358054440067853, guid: 15403c3e6e0907d10a9d8d012e135bff,
         type: 3}
+      propertyPath: m_PropertySheet.m_Int.m_Array.Array.data[0].m_Name
+      value: Amount
+      objectReference: {fileID: 0}
+    - target: {fileID: 574358054440067853, guid: 15403c3e6e0907d10a9d8d012e135bff,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Int.m_Array.Array.data[0].m_Value
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 574358054440067853, guid: 15403c3e6e0907d10a9d8d012e135bff,
+        type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Name
       value: Size_center
+      objectReference: {fileID: 0}
+    - target: {fileID: 574358054440067853, guid: 15403c3e6e0907d10a9d8d012e135bff,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Int.m_Array.Array.data[0].m_Overridden
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 574358054440067853, guid: 15403c3e6e0907d10a9d8d012e135bff,
         type: 3}

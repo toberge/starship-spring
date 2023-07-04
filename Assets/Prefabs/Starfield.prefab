@@ -55,7 +55,7 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 48, y: 27, z: 1}
+      - m_Value: {x: 52, y: 30, z: 1}
         m_Name: Size_size
         m_Overridden: 1
     m_Vector4f:

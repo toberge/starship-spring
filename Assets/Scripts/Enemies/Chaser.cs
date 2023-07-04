@@ -41,6 +41,9 @@ public class Chaser : MonoBehaviour
 
     private void Start()
     {
+        leftSide.GetComponent<Enemy>().enabled = false;
+        rightSide.GetComponent<Enemy>().enabled = false;
+
         direction = Arena.VectorIntoArena(transform.position);
         ship = FindObjectOfType<Ship>();
 
@@ -62,9 +65,25 @@ public class Chaser : MonoBehaviour
         }
         else
         {
-            if (leftSide) leftSide.SetThrusterIntensity(Vector2.zero);
-            if (rightSide) rightSide.SetThrusterIntensity(Vector2.zero);
+            // Turn into regular enemy
+            if (leftSide)
+            {
+                leftSide.GetComponent<Enemy>().enabled = true;
+                if (leftSide.TryGetComponent<Cannon>(out var cannon))
+                {
+                    cannon.enabled = true;
+                }
+            }
+            if (rightSide)
+            {
+                rightSide.GetComponent<Enemy>().enabled = true;
+                if (rightSide.TryGetComponent<Cannon>(out var cannon))
+                {
+                    cannon.enabled = true;
+                }
+            }
             this.enabled = false;
+            // TODO prevent memory leak from excess empty Chaser parents :/
         }
     }
 

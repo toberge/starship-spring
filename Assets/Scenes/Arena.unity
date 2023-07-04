@@ -1700,26 +1700,32 @@ MonoBehaviour:
   popInTime: 0.5
   ratings:
   - threshold: 2
+    name: FABULOUS
+    color: {r: 0.05882351, g: 0.6392157, b: 0.53034294, a: 1}
+  - threshold: 5
     name: ESTEEMED
     color: {r: 0.39061454, g: 0.6387859, b: 0.05866798, a: 1}
-  - threshold: 4
+  - threshold: 10
     name: DEVIOUS
     color: {r: 0.8476653, g: 0.84860516, b: 0.1072689, a: 1}
-  - threshold: 7
+  - threshold: 15
     name: CAPTIVATING
     color: {r: 0.8569232, g: 0.5615298, b: 0.11103017, a: 1}
-  - threshold: 10
+  - threshold: 20
     name: BALEFUL
     color: {r: 0.8154205, g: 0.39010626, b: 0.09635622, a: 1}
-  - threshold: 13
+  - threshold: 30
     name: AWESOME
     color: {r: 0.80240214, g: 0.15660031, b: 0.08912848, a: 1}
-  - threshold: 17
+  - threshold: 40
     name: SUPREME
     color: {r: 0.8225132, g: 0.13437998, b: 0.43762952, a: 1}
-  - threshold: 25
-    name: S.P.R.I.N.G.
+  - threshold: 50
+    name: STARSHIP
     color: {r: 0.8770084, g: 0.27669507, b: 0.7420693, a: 1}
+  - threshold: 100
+    name: S.P.R.I.N.G.
+    color: {r: 0.96436065, g: 0, b: 0.87719834, a: 1}
 --- !u!1 &1245636338
 GameObject:
   m_ObjectHideFlags: 0

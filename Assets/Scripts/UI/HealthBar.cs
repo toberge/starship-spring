@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 
 public class HealthBar : MonoBehaviour
@@ -41,27 +39,23 @@ public class HealthBar : MonoBehaviour
 
     private void OnLeftHit(float delta, float remainingHealth)
     {
-        //if (leftTween != null) LeanTween.cancel(leftTween.id);
-        //leftTween = LeanTween.value(leftHitbox.gameObject, SetLeftHealth, leftHealth, remainingHealth, transitionTime);
         SetLeftHealth(remainingHealth);
         leftHealth = remainingHealth;
     }
 
     private void OnRightHit(float delta, float remainingHealth)
     {
-        //if (rightTween != null) LeanTween.cancel(rightTween.id);
-        //rightTween = LeanTween.value(rightHitbox.gameObject, SetRightHealth, rightHealth, remainingHealth, transitionTime);
         SetRightHealth(remainingHealth);
         rightHealth = remainingHealth;
     }
 
     private void SetLeftHealth(float health)
     {
-        material.SetFloat("_LeftHealth", Mathf.Clamp(health / leftHitbox.MaxHealth, 0.01f, 0.999f));
+        material.SetFloat("_LeftHealth", Mathf.Clamp(health / leftHitbox.MaxHealth, 0.001f, 0.999f));
     }
 
     private void SetRightHealth(float health)
     {
-        material.SetFloat("_RightHealth", Mathf.Clamp(health / rightHitbox.MaxHealth, 0.01f, 0.999f));
+        material.SetFloat("_RightHealth", Mathf.Clamp(health / rightHitbox.MaxHealth, 0.001f, 0.999f));
     }
 }

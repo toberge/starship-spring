@@ -68,8 +68,9 @@ public class Powerup : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.31f);
         if (shell) Destroy(shell.gameObject);
         if (content) Destroy(content.gameObject);
+
         yield return new WaitForSecondsRealtime(duration - 0.31f);
-        effect.Remove(ship);
+        if (ship) effect.Remove(ship);
         Destroy(gameObject);
     }
 }

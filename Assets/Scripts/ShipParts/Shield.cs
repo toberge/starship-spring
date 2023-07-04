@@ -19,12 +19,13 @@ public class Shield : MonoBehaviour
     {
         gameObject.SetActive(true);
         if (tween != null) LeanTween.cancel(tween.id);
-        gameObject.LeanScale(fullScale, .3f).setEaseInCubic();
+        tween = gameObject.LeanScale(fullScale, .3f).setEaseInCubic();
         shieldCollider.enabled = true;
     }
 
     public void Lower()
     {
+        if (tween != null) LeanTween.cancel(tween.id);
         tween = gameObject.LeanScale(Vector3.zero, .5f)
             .setEaseInCubic()
             .setOnComplete(() => shieldCollider.enabled = true);

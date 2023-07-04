@@ -18,6 +18,9 @@ public class HealthBar : MonoBehaviour
     private float leftHealth = 100;
     private float rightHealth = 100;
 
+    private LTDescr leftTween;
+    private LTDescr rightTween;
+
     void Start()
     {
         leftHitbox.OnHeal += OnLeftHit;
@@ -38,13 +41,17 @@ public class HealthBar : MonoBehaviour
 
     private void OnLeftHit(float delta, float remainingHealth)
     {
-        LeanTween.value(leftHitbox.gameObject, SetLeftHealth, leftHealth, remainingHealth, transitionTime);
+        //if (leftTween != null) LeanTween.cancel(leftTween.id);
+        //leftTween = LeanTween.value(leftHitbox.gameObject, SetLeftHealth, leftHealth, remainingHealth, transitionTime);
+        SetLeftHealth(remainingHealth);
         leftHealth = remainingHealth;
     }
 
     private void OnRightHit(float delta, float remainingHealth)
     {
-        LeanTween.value(rightHitbox.gameObject, SetRightHealth, rightHealth, remainingHealth, transitionTime);
+        //if (rightTween != null) LeanTween.cancel(rightTween.id);
+        //rightTween = LeanTween.value(rightHitbox.gameObject, SetRightHealth, rightHealth, remainingHealth, transitionTime);
+        SetRightHealth(remainingHealth);
         rightHealth = remainingHealth;
     }
 

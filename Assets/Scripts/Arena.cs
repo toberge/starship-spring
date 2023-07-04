@@ -20,7 +20,7 @@ public class Arena
 
     public static bool IsOutsideArena(Vector3 position)
     {
-        return (Mathf.Abs(position.x) > Arena.HalfWidth + OutsideThreshold && Mathf.Abs(position.y) > Arena.HalfHeight + OutsideThreshold);
+        return (Mathf.Abs(position.x) > Arena.HalfWidth + OutsideThreshold || Mathf.Abs(position.y) > Arena.HalfHeight + OutsideThreshold);
     }
 
     public static Vector3 VectorIntoArena(Vector3 position)

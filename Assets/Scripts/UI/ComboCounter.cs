@@ -43,6 +43,7 @@ public class ComboCounter : MonoBehaviour
 
     private int combo = 0;
     private float lastKillTime;
+    private Transform comboContainer;
 
     private void Start()
     {
@@ -50,6 +51,16 @@ public class ComboCounter : MonoBehaviour
         ship.OnDeath += ResetCombo;
         counterText.text = "";
         ratingText.text = "";
+        comboContainer = ratingText.transform.parent;
+    }
+
+    private void OnDestroy()
+    {
+        if (ship)
+        {
+            ship.OnKill -= OnKill;
+            ship.OnDeath -= ResetCombo;
+        }
     }
 
     private void OnKill()
@@ -86,12 +97,8 @@ public class ComboCounter : MonoBehaviour
         AddScoreForKill();
 
         // Pop in
-        counterText.transform.localScale = Vector2.one;
-        ratingText.transform.localScale = Vector2.one * (1f + (rating + 1) * 0.2f);
-        counterText.gameObject
-            .LeanScale(Vector3.one * 1.2f, popInTime)
-            .setEasePunch();
-        ratingText.gameObject
+        comboContainer.transform.localScale = Vector2.one * (1f + (rating + 1) * 0.2f);
+        comboContainer.gameObject
             .LeanScale(Vector3.one * (1.2f + (rating + 1) * 0.3f), popInTime)
             .setEasePunch();
     }
@@ -113,8 +120,7 @@ public class ComboCounter : MonoBehaviour
         rating = -1;
 
         // Pop out
-        counterText.gameObject.LeanScale(Vector3.zero, popInTime * .6f);
-        ratingText.gameObject.LeanScale(Vector3.zero, popInTime * .6f);
+        comboContainer.gameObject.LeanScale(Vector3.zero, popInTime * .6f);
     }
 
     private void Update()
